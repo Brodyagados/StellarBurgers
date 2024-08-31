@@ -3,13 +3,15 @@
   flex-direction: column;
   flex-grow: 1;
   flex-basis: 0;
-  gap: 10px;
   height: max-content;
   max-width: 600px;
   overflow-y: hidden;
 }
 
 .scrollableList {
-  height: 40dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 38dvh;
   overflow: auto;
 }

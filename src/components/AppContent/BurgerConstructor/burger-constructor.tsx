@@ -26,7 +26,7 @@ const BurgerConstructor = () => {
   return (
     <div className={`${styles.container} pt-25`}>
       <DraggableConstructorElement type='top' text={bun.name} price={bun.price} image={bun.image} isLocked />
-      <div className={styles.scrollableList}>
+      <div className={`${styles.scrollableList} mt-4 mb-4`}>
         {mains.map((item) => (
           <DraggableConstructorElement key={item._id} text={item.name} price={item.price} image={item.image} />
         ))}
