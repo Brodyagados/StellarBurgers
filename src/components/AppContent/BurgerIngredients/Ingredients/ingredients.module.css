@@ -1,0 +1,4 @@
+.scrollableList {
+  height: 63dvh;
+  overflow: auto;
+}

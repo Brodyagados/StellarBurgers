@@ -1,4 +1,5 @@
 import { data } from '../../../../utils/data';
+import styles from './ingredients.module.css';
 import { useMemo } from 'react';
 import { getIngredientTypeDataList } from '../../../../utils/constants';
 import { Group } from './Group';
@@ -27,7 +28,7 @@ const Ingredients = () => {
   );
 
   return (
-    <ul className='mt-10'>
+    <ul className={`${styles.scrollableList} mt-10`}>
       {getIngredientTypeDataList().map(({ value: type, description }, index) => (
         <li key={index}>
           <Group text={description} items={ingredientsByType[type]} />
