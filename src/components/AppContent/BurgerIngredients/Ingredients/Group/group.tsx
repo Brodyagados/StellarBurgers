@@ -8,7 +8,7 @@ type GroupProps = {
 };
 
 const Group = ({ text, items }: GroupProps) => (
-  <div>
+  <>
     <span className='text text_type_main-medium'>{text}</span>
     <ul className={`${styles.items} px-4 pt-6 pb-10`}>
       {items.map((item, itemIndex) => (
@@ -17,7 +17,7 @@ const Group = ({ text, items }: GroupProps) => (
         </li>
       ))}
     </ul>
-  </div>
+  </>
 );
 
 export default Group;

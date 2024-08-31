@@ -1,11 +1,16 @@
 import styles from './app-content.module.css';
 import { BurgerConstructor } from './BurgerConstructor';
 import { BurgerIngredients } from './BurgerIngredients';
+import { IngredientModel } from './BurgerIngredients/Ingredients/ingredients';
 
-const AppContent = () => (
+type AppContentProps = {
+  ingredients: IngredientModel[];
+};
+
+const AppContent = ({ ingredients }: AppContentProps) => (
   <div className={styles.container}>
-    <BurgerIngredients />
-    <BurgerConstructor />
+    <BurgerIngredients ingredients={ingredients} />
+    <BurgerConstructor ingredients={ingredients} />
   </div>
 );
 
