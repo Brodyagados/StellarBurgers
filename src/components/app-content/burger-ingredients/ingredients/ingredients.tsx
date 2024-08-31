@@ -1,7 +1,7 @@
 import styles from './ingredients.module.css';
 import { useMemo } from 'react';
 import { getIngredientTypeDataList } from '../../../../utils/constants';
-import { Group } from './Group';
+import { Group } from './group';
 import { IngredientModel } from '../../../../models';
 
 type IngredientsByTypeModel = Record<string, IngredientModel[]>;

@@ -1,8 +1,8 @@
 import { IngredientModel } from '../../../models';
 import styles from './burger-ingredients.module.css';
-import { Ingredients } from './Ingredients';
-import { Tabs } from './Tabs';
-import { Title } from './Title';
+import { Ingredients } from './ingredients';
+import { Tabs } from './tabs';
+import { Title } from './title';
 
 type BurgerIngredientsProps = {
   ingredients: IngredientModel[];

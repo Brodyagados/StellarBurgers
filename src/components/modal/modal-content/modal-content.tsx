@@ -1,5 +1,5 @@
 import styles from './modal-content.module.css';
-import { ModalHeader } from '../ModalHeader';
+import { ModalHeader } from '../modal-header';
 
 type ModalContentProps = {
   title?: string;

@@ -1,3 +1,3 @@
-export * from './AppHeader';
-export * from './AppContent';
-export * from './Modal';
+export * from './app-header';
+export * from './app-content';
+export * from './modal';

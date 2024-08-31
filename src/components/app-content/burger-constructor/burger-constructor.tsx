@@ -1,8 +1,8 @@
 import styles from './burger-constructor.module.css';
 import { useMemo } from 'react';
 import { ingredientType } from '../../../utils/constants';
-import { DraggableConstructorElement } from './DraggableConstructorElement';
-import { Total } from './Total';
+import { DraggableConstructorElement } from './draggable-constructor-element';
+import { Total } from './total';
 import { IngredientModel } from '../../../models';
 
 type TestDataModel = {

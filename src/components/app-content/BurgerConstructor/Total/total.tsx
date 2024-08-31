@@ -1,7 +1,7 @@
 import { Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './total.module.css';
 import { useState } from 'react';
-import { Modal } from '../../../Modal';
+import { Modal } from '../../../modal';
 import OrderDetails from '../OrderDetails/order-details';
 
 type TotalProps = {

@@ -1,5 +1,5 @@
 import styles from './group.module.css';
-import { Item } from '../Item';
+import { Item } from '../item';
 import { IngredientModel } from '../../../../../models';
 
 type GroupProps = {

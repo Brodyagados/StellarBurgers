@@ -1,6 +1,6 @@
 import styles from './ingredient-details.module.css';
 import { IngredientModel } from '../../../../models';
-import { Macronutrient } from './Macronutrient';
+import { Macronutrient } from './macronutrient';
 
 type IngredientDetailsProps = {
   data: IngredientModel;

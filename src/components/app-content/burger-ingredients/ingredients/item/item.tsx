@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IngredientModel } from '../../../../../models';
-import { Modal } from '../../../../Modal';
-import { IngredientDetails } from '../../IngredientDetails';
+import { Modal } from '../../../../modal';
+import { IngredientDetails } from '../../ingredient-details';
 import styles from './item.module.css';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 

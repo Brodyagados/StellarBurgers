@@ -1,7 +1,7 @@
 import styles from './modal.module.css';
 import { createPortal } from 'react-dom';
-import { ModalOverlay } from './ModalOverlay';
-import { ModalContent } from './ModalContent';
+import { ModalOverlay } from './modal-overlay';
+import { ModalContent } from './modal-content';
 
 type ModalProps = {
   title?: string;

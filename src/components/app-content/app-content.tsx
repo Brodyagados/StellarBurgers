@@ -1,7 +1,7 @@
 import { IngredientModel } from '../../models';
 import styles from './app-content.module.css';
-import { BurgerConstructor } from './BurgerConstructor';
-import { BurgerIngredients } from './BurgerIngredients';
+import { BurgerConstructor } from './burger-constructor';
+import { BurgerIngredients } from './burger-ingredients';
 
 type AppContentProps = {
   ingredients: IngredientModel[];
