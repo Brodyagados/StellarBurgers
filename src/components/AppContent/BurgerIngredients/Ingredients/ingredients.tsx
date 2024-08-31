@@ -1,4 +1,3 @@
-import { data } from '../../../../utils/data';
 import styles from './ingredients.module.css';
 import { useMemo } from 'react';
 import { getIngredientTypeDataList } from '../../../../utils/constants';
@@ -14,7 +13,11 @@ export type IngredientModel = {
 
 type IngredientsByTypeModel = Record<string, IngredientModel[]>;
 
-const Ingredients = () => {
+type IngredientsProps = {
+  data: IngredientModel[];
+};
+
+const Ingredients = ({ data }: IngredientsProps) => {
   const ingredientsByType = useMemo(
     () =>
       data.reduce<IngredientsByTypeModel>(
@@ -24,14 +27,14 @@ const Ingredients = () => {
         }),
         {}
       ),
-    []
+    [data]
   );
 
   return (
     <ul className={`${styles.scrollableList} mt-10`}>
       {getIngredientTypeDataList().map(({ value: type, description }, index) => (
         <li key={index}>
-          <Group text={description} items={ingredientsByType[type]} />
+          <Group text={description} items={ingredientsByType[type] ?? []} />
         </li>
       ))}
     </ul>

@@ -1,13 +1,18 @@
 import styles from './burger-ingredients.module.css';
 import { Ingredients } from './Ingredients';
+import { IngredientModel } from './Ingredients/ingredients';
 import { Tabs } from './Tabs';
 import { Title } from './Title';
 
-const BurgerIngredients = () => (
+type BurgerIngredientsProps = {
+  ingredients: IngredientModel[];
+};
+
+const BurgerIngredients = ({ ingredients }: BurgerIngredientsProps) => (
   <div className={styles.container}>
     <Title text='Соберите бургер' />
     <Tabs />
-    <Ingredients />
+    <Ingredients data={ingredients} />
   </div>
 );
 
