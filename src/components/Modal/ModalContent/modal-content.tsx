@@ -2,7 +2,7 @@ import styles from './modal-content.module.css';
 import { ModalHeader } from '../ModalHeader';
 
 type ModalContentProps = {
-  title: string;
+  title?: string;
   onClick: () => void;
 };
 
