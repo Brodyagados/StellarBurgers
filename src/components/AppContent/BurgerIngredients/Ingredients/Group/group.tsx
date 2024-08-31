@@ -1,6 +1,6 @@
 import styles from './group.module.css';
-import { IngredientModel } from '../ingredients';
 import { Item } from '../Item';
+import { IngredientModel } from '../../../../../models';
 
 type GroupProps = {
   text: string;

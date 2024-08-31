@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { AppContent, AppHeader } from './components';
 import apiClient from './utils/api-client';
-import { IngredientModel } from './components/AppContent/BurgerIngredients/Ingredients/ingredients';
+import { IngredientModel } from './models';
 
 function App() {
   const [ingredients, setIngredients] = useState<IngredientModel[]>([]);

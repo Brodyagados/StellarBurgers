@@ -1,6 +1,6 @@
+import { IngredientModel } from '../../../models';
 import styles from './burger-ingredients.module.css';
 import { Ingredients } from './Ingredients';
-import { IngredientModel } from './Ingredients/ingredients';
 import { Tabs } from './Tabs';
 import { Title } from './Title';
 
