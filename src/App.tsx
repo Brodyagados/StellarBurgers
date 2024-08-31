@@ -1,10 +1,11 @@
 import './App.css';
-import { AppHeader } from './components';
+import { AppContent, AppHeader } from './components';
 
 function App() {
   return (
     <>
       <AppHeader />
+      <AppContent />
     </>
   );
 }
