@@ -4,7 +4,7 @@ import { ModalOverlay } from './ModalOverlay';
 import { ModalContent } from './ModalContent';
 
 type ModalProps = {
-  title: string;
+  title?: string;
   onCloseClick: () => void;
 };
 
