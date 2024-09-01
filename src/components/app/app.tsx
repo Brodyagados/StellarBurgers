@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import './App.css';
-import { AppContent, AppHeader } from './components';
-import apiClient from './utils/api-client';
-import { IngredientModel } from './models';
+import apiClient from '../../utils/api-client';
+import { IngredientModel } from '../../models';
+import { AppHeader } from '../app-header';
+import { AppContent } from '../app-content';
 
 function App() {
   const [ingredients, setIngredients] = useState<IngredientModel[]>([]);
