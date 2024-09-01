@@ -1,22 +1,15 @@
-import { useState } from 'react';
 import { IngredientModel } from '../../../../../models';
-import { Modal } from '../../../../modal';
-import { IngredientDetails } from '../../ingredient-details';
 import styles from './item.module.css';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 type ItemProps = {
   data: IngredientModel;
+  onClick: () => void;
 };
 
-const Item = ({ data }: ItemProps) => {
-  const [showDetail, setShowDetail] = useState<boolean>(false);
-
-  const handleShowClick = () => setShowDetail(true);
-  const handleCloseClick = () => setShowDetail(false);
-
+const Item = ({ data, onClick }: ItemProps) => {
   return (
-    <div className={styles.container} onClick={handleShowClick}>
+    <div className={styles.container} onClick={onClick}>
       <img className={`${styles.image} mx-4`} src={data.image} alt={`${data.name}.`} />
       <Counter count={1} size='default' extraClass='m-1' />
       <div className={styles.price}>
@@ -24,11 +17,6 @@ const Item = ({ data }: ItemProps) => {
         <CurrencyIcon type='primary' />
       </div>
       <span className={`${styles.title} text text_type_main-default`}>{data.name}</span>
-      {showDetail && (
-        <Modal title='Детали ингредиента' onCloseClick={handleCloseClick}>
-          <IngredientDetails data={data} />
-        </Modal>
-      )}
     </div>
   );
 };
