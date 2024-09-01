@@ -10,7 +10,7 @@ const ModalContent = ({ children, title, onClick }: React.PropsWithChildren<Moda
   return (
     <div className={`${styles.container} pr-10 pt-10 pl-10 pb-15`}>
       <ModalHeader title={title} onClick={onClick} />
-      {children}
+      <main>{children}</main>
     </div>
   );
 };
