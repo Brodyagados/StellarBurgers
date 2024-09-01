@@ -20,10 +20,10 @@ const Modal = ({ children, title, onCloseClick }: React.PropsWithChildren<ModalP
   };
 
   useEffect(() => {
-    document.addEventListener('keypress', closeDetailByEscKey);
+    document.addEventListener('keydown', closeDetailByEscKey);
 
     return () => {
-      document.removeEventListener('keypress', closeDetailByEscKey);
+      document.removeEventListener('keydown', closeDetailByEscKey);
     };
   }, []);
 
