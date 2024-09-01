@@ -9,8 +9,12 @@ function App() {
 
   useEffect(() => {
     const getIngredients = async () => {
-      const data = await apiClient.request<IngredientModel[]>('/ingredients');
-      setIngredients(data);
+      try {
+        const data = await apiClient.request<IngredientModel[]>('/ingredients');
+        setIngredients(data);
+      } catch (e) {
+        alert(`Ошибка получения списка ингредиентов (${(e as Error).message})`);
+      }
     };
 
     getIngredients();
