@@ -12,7 +12,7 @@ const Group = ({ text, items }: GroupProps) => (
     <span className='text text_type_main-medium'>{text}</span>
     <ul className={`${styles.items} px-4 pt-6 pb-10`}>
       {items.map((item, itemIndex) => (
-        <li key={itemIndex}>
+        <li key={item._id}>
           <Item data={item} />
         </li>
       ))}

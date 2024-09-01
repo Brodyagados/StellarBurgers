@@ -25,8 +25,8 @@ const Ingredients = ({ data }: IngredientsProps) => {
 
   return (
     <ul className={`${styles.scrollableList} mt-10`}>
-      {getIngredientTypeDataList().map(({ value: type, description }, index) => (
-        <li key={index}>
+      {getIngredientTypeDataList().map(({ value: type, description }) => (
+        <li key={type}>
           <Group text={description} items={ingredientsByType[type] ?? []} />
         </li>
       ))}
