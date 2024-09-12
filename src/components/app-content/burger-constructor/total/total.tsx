@@ -3,6 +3,8 @@ import styles from './total.module.css';
 import { useState } from 'react';
 import { Modal } from '../../../modal';
 import OrderDetails from '../order-details/order-details';
+import { useDispatch } from 'react-redux';
+import { submitOrder } from '../../../../services/order-detail/actions';
 
 type TotalProps = {
   value: number;
@@ -10,8 +12,14 @@ type TotalProps = {
 
 const Total = ({ value }: TotalProps) => {
   const [showDetail, setShowDetail] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
-  const handleShowClick = () => setShowDetail(true);
+  const handleShowClick = () => {
+    // TODO: доработать типизацию на 5 спринте!!!
+    //@ts-ignore
+    dispatch(submitOrder([])); // TODO: подключить стор для выбранных ингредиентов
+    setShowDetail(true);
+  };
   const handleCloseClick = () => setShowDetail(false);
 
   return (
