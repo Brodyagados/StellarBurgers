@@ -4,10 +4,6 @@ import { ingredientsInConstructorReducer } from './ingredients-in-constructor/re
 import { ingredientDetailReducer } from './ingredient-detail/reducer';
 import { orderDetailReducer } from './order-detail/reducer';
 
-export type TBaseReducerAction = {
-  type: string;
-};
-
 export const rootReducer = combineReducers({
   ingredientsList: ingredientsListReducer,
   ingredientsInConstructor: ingredientsInConstructorReducer,

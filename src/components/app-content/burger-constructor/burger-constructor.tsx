@@ -1,44 +1,33 @@
 import styles from './burger-constructor.module.css';
 import { useMemo } from 'react';
-import { ingredientType } from '../../../utils/constants';
 import { DraggableConstructorElement } from './draggable-constructor-element';
 import { Total } from './total';
-import { IngredientModel } from '../../../models';
 import { useSelector } from 'react-redux';
-import { TIngredientsListState } from '../../../services/ingredients-list/reducer';
-import { getIngredientsSelector } from '../../../services/ingredients-list/selectors';
-
-type TestDataModel = {
-  bun?: IngredientModel;
-  mains: IngredientModel[];
-  totalPrice: number;
-};
+import { TIngredientsInConstructorState } from '../../../services/ingredients-in-constructor/reducer';
+import { getIngredientsInConstructorSelector } from '../../../services/ingredients-in-constructor/selectors';
 
 const BurgerConstructor = () => {
-  const { ingredients } = useSelector<TIngredientsListState, TIngredientsListState>(getIngredientsSelector);
+  const { bun, ingredients } = useSelector<TIngredientsInConstructorState, TIngredientsInConstructorState>(
+    getIngredientsInConstructorSelector
+  );
 
-  //тестовые данные для конструктора для первого спринта
-  const { bun, mains, totalPrice } = useMemo<TestDataModel>(
-    () => ({
-      bun: ingredients.find(({ type }) => type === ingredientType.Bun),
-      mains: ingredients.filter(({ type }) => type !== ingredientType.Bun),
-      totalPrice: ingredients.reduce<number>((result, currentValue) => (result += currentValue.price), 0)
-    }),
-    [ingredients]
+  const totalPrice = useMemo<number>(
+    () => ingredients.reduce<number>((result, currentValue) => (result += currentValue.price), 0) + (bun ? 2 * bun.price : 0),
+    [bun, ingredients]
   );
 
   return (
     <div className={`${styles.container} pt-25`}>
       {bun && <DraggableConstructorElement type='top' text={`${bun.name} (верх)`} price={bun.price} image={bun.image} isLocked />}
       <div className={`${styles.scrollableList} mt-4 mb-4`}>
-        {mains.map((item) => (
+        {ingredients.map((item) => (
           <DraggableConstructorElement key={item._id} text={item.name} price={item.price} image={item.image} />
         ))}
       </div>
       {bun && (
         <DraggableConstructorElement type='bottom' text={`${bun.name} (низ)`} price={bun.price} image={bun.image} isLocked />
       )}
-      <Total value={totalPrice} />
+      {(bun || ingredients.length > 0) && <Total value={totalPrice} />}
     </div>
   );
 };
