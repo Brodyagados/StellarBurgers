@@ -4,6 +4,9 @@ import { ingredientType } from '../../../utils/constants';
 import { DraggableConstructorElement } from './draggable-constructor-element';
 import { Total } from './total';
 import { IngredientModel } from '../../../models';
+import { useSelector } from 'react-redux';
+import { TIngredientsListState } from '../../../services/ingredients-list/reducer';
+import { getIngredientsSelector } from '../../../services/ingredients-list/selectors';
 
 type TestDataModel = {
   bun?: IngredientModel;
@@ -11,11 +14,9 @@ type TestDataModel = {
   totalPrice: number;
 };
 
-type BurgerConstructorProps = {
-  ingredients: IngredientModel[];
-};
+const BurgerConstructor = () => {
+  const { ingredients } = useSelector<TIngredientsListState, TIngredientsListState>(getIngredientsSelector);
 
-const BurgerConstructor = ({ ingredients }: BurgerConstructorProps) => {
   //тестовые данные для конструктора для первого спринта
   const { bun, mains, totalPrice } = useMemo<TestDataModel>(
     () => ({
