@@ -1,5 +1,5 @@
 import { Dispatch, UnknownAction } from 'redux';
-import { IngredientModel } from '../../models';
+import { IngredientsListModel } from '../../models';
 import apiClient from '../../utils/api-client';
 
 export const GET_INGREDIENTS_LIST_LOADING = 'GET_INGREDIENTS_LIST_LOADING';
@@ -10,11 +10,11 @@ export const getIngredientsList = () => (dispatch: Dispatch<UnknownAction>) => {
   dispatch({ type: GET_INGREDIENTS_LIST_LOADING });
 
   return apiClient
-    .request<IngredientModel[]>('/ingredients')
+    .request<IngredientsListModel>('/ingredients')
     .then((data) =>
       dispatch({
         type: GET_INGREDIENTS_LIST_SUCCESS,
-        payload: data
+        payload: data.data
       })
     )
     .catch((e: Error) =>

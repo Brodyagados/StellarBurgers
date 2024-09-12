@@ -1,3 +1,7 @@
+export type IngredientsListModel = {
+  data: IngredientModel[];
+};
+
 export type IngredientModel = {
   _id: string;
   name: string;
