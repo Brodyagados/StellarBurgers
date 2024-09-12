@@ -8,6 +8,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // TODO: доработать типизацию на 5 спринте!!!
+    //@ts-ignore
     dispatch(getIngredientsList());
   }, []);
 
