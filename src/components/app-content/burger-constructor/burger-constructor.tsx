@@ -28,13 +28,15 @@ const BurgerConstructor = ({ ingredients }: BurgerConstructorProps) => {
 
   return (
     <div className={`${styles.container} pt-25`}>
-      {bun && <DraggableConstructorElement type='top' text={bun.name} price={bun.price} image={bun.image} isLocked />}
+      {bun && <DraggableConstructorElement type='top' text={`${bun.name} (верх)`} price={bun.price} image={bun.image} isLocked />}
       <div className={`${styles.scrollableList} mt-4 mb-4`}>
         {mains.map((item) => (
           <DraggableConstructorElement key={item._id} text={item.name} price={item.price} image={item.image} />
         ))}
       </div>
-      {bun && <DraggableConstructorElement type='bottom' text={bun.name} price={bun.price} image={bun.image} isLocked />}
+      {bun && (
+        <DraggableConstructorElement type='bottom' text={`${bun.name} (низ)`} price={bun.price} image={bun.image} isLocked />
+      )}
       <Total value={totalPrice} />
     </div>
   );
