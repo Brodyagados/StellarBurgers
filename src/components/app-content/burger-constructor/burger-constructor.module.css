@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+  height: max-content;
+  max-width: 600px;
+  overflow-y: hidden;
+}
+
+.scrollableList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 38dvh;
+  overflow: auto;
+}

@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  gap: 40px;
+  align-self: flex-end;
+  align-items: center;
+}
+
+.totalPrice {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
