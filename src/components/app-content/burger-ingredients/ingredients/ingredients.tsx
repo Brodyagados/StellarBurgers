@@ -1,23 +1,27 @@
 import styles from './ingredients.module.css';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { getIngredientTypeDataList } from '../../../../utils/constants';
 import { Group } from './group';
 import { IngredientModel } from '../../../../models';
 import { Modal } from '../../../modal';
 import { IngredientDetails } from '../ingredient-details';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getIngredientsSelector } from '../../../../services/ingredients-list/selectors';
 import { TIngredientsListState } from '../../../../services/ingredients-list/reducer';
+import { removeIngredientDetail } from '../../../../services/ingredient-detail/actions';
+import { getIngredientDetailSelector } from '../../../../services/ingredient-detail/selectors';
 
 type IngredientsByTypeModel = Record<string, IngredientModel[]>;
 
 const Ingredients = () => {
   const { ingredients, isLoading, error } = useSelector<TIngredientsListState, TIngredientsListState>(getIngredientsSelector);
 
-  const [ingredient, setIngredient] = useState<IngredientModel | null>(null);
+  const ingredientDetail = useSelector(getIngredientDetailSelector);
+  const dispatch = useDispatch();
 
-  const handleShowClick = (model: IngredientModel) => setIngredient(model);
-  const handleCloseClick = () => setIngredient(null);
+  const handleDetailCloseClick = () => {
+    dispatch(removeIngredientDetail());
+  };
 
   const ingredientsByType = useMemo(
     () =>
@@ -48,13 +52,13 @@ const Ingredients = () => {
       <ul className={`${styles.scrollableList} mt-10`}>
         {getIngredientTypeDataList().map(({ value: type, description }) => (
           <li key={type}>
-            <Group text={description} items={ingredientsByType[type] ?? []} onItemClick={handleShowClick} />
+            <Group text={description} items={ingredientsByType[type] ?? []} />
           </li>
         ))}
       </ul>
-      {ingredient && (
-        <Modal title='Детали ингредиента' onCloseClick={handleCloseClick}>
-          <IngredientDetails data={ingredient} />
+      {ingredientDetail && (
+        <Modal title='Детали ингредиента' onCloseClick={handleDetailCloseClick}>
+          <IngredientDetails data={ingredientDetail} />
         </Modal>
       )}
     </>
