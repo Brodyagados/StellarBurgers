@@ -13,4 +13,5 @@ export type IngredientModel = {
   fat: number;
   carbohydrates: number;
   calories: number;
+  count: number;
 };

@@ -9,6 +9,7 @@ import { IngredientsContainer } from './ingredients-container';
 import { useDrop } from 'react-dnd';
 import { addBunInConstructor, addIngredientInConstructor } from '../../../services/ingredients-in-constructor/actions';
 import { IngredientModel } from '../../../models';
+import { addIngredientCount } from '../../../services/ingredients-list/actions';
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
@@ -23,24 +24,31 @@ const BurgerConstructor = () => {
 
   const [, dropBunTopRef] = useDrop({
     accept: 'bun',
-    drop: (item: IngredientModel) => {
-      dispatch(addBunInConstructor(item));
-    }
-  });
-
-  const [, dropBunBottomRef] = useDrop({
-    accept: 'bun',
-    drop: (item: IngredientModel) => {
-      dispatch(addBunInConstructor(item));
-    }
+    drop: handleOnDropBun
   });
 
   const [, dropIngredientRef] = useDrop({
     accept: 'ingredient',
-    drop: (item: IngredientModel) => {
-      dispatch(addIngredientInConstructor(item));
-    }
+    drop: handleOnDropIngredient
   });
+
+  const [, dropBunBottomRef] = useDrop({
+    accept: 'bun',
+    drop: handleOnDropBun
+  });
+
+  function handleOnDropBun(item: IngredientModel) {
+    dispatch(addBunInConstructor(item));
+    if (bun) {
+      dispatch(addIngredientCount(bun._id, -2));
+    }
+    dispatch(addIngredientCount(item._id, 2));
+  }
+
+  function handleOnDropIngredient(item: IngredientModel) {
+    dispatch(addIngredientInConstructor(item));
+    dispatch(addIngredientCount(item._id, 1));
+  }
 
   return (
     <div className={`${styles.container} pt-25`}>

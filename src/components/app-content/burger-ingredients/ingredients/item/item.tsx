@@ -29,7 +29,7 @@ const Item = ({ data }: ItemProps) => {
   return (
     <div className={styles.container} onClick={handleClick} ref={data.type === 'bun' ? dragBunRef : dragIngredientRef}>
       <img className={`${styles.image} mx-4`} src={data.image} alt={`${data.name}.`} />
-      <Counter count={1} size='default' extraClass='m-1' />
+      {data.count > 0 && <Counter count={data.count} size='default' extraClass='m-1' />}
       <div className={styles.price}>
         <span className='text text_type_digits-default'>{data.price}</span>
         <CurrencyIcon type='primary' />
