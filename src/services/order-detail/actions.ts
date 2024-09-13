@@ -18,7 +18,7 @@ export const submitOrder = (ingredients: string[]) => async (dispatch: Dispatch<
   } catch (e) {
     return dispatch({
       type: SUBMIT_ORDER_ERROR,
-      payload: e.message
+      payload: (e as Error).message
     });
   }
 };
