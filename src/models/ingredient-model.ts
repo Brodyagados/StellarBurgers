@@ -16,4 +16,4 @@ export type IngredientModel = {
   count: number;
 };
 
-export type ConstructorIngredientModel = IngredientModel & { itemId: number };
+export type ConstructorIngredientModel = IngredientModel & { uniqueId: number };

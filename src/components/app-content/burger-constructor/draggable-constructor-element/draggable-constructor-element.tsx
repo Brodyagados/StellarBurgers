@@ -12,7 +12,7 @@ import { getIngredientsInConstructorSelector } from '../../../../services/ingred
 
 type DraggableConstructorElementProps = {
   id: string;
-  itemId?: number;
+  uniqueId?: string;
   text: string;
   price: number;
   image: string;
@@ -23,7 +23,7 @@ type DraggableConstructorElementProps = {
 
 const DraggableConstructorElement = ({
   id,
-  itemId,
+  uniqueId,
   text,
   price,
   image,
@@ -93,13 +93,13 @@ const DraggableConstructorElement = ({
 
   const opacity = isDragging ? 0 : 1;
 
-  const handleClose = (id: string, itemId: number) => {
+  const handleClose = (id: string, uniqueId: string) => {
     dispatch(addIngredientCount(id, -1));
-    dispatch(removeIngredientInConstructor(itemId));
+    dispatch(removeIngredientInConstructor(uniqueId));
   };
 
   return (
-    <div className={`${styles.container} ${isLocked ? 'ml-6' : ''}`} {...(!isLocked && itemId && { ref, style: { opacity } })}>
+    <div className={`${styles.container} ${isLocked ? 'ml-6' : ''}`} {...(!isLocked && uniqueId && { ref, style: { opacity } })}>
       {!isLocked && <DragIcon type='primary' />}
       <ConstructorElement
         extraClass='ml-6'
@@ -108,7 +108,7 @@ const DraggableConstructorElement = ({
         price={price}
         thumbnail={image}
         isLocked={isLocked}
-        {...(!isLocked && itemId && { handleClose: () => handleClose(id, itemId) })}
+        {...(!isLocked && uniqueId && { handleClose: () => handleClose(id, uniqueId) })}
       />
     </div>
   );

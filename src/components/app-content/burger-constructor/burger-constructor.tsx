@@ -73,9 +73,9 @@ const BurgerConstructor = () => {
         {ingredients.length > 0 ? (
           ingredients.map((item, index) => (
             <DraggableConstructorElement
-              key={item.itemId}
+              key={item.uniqueId}
               id={item._id}
-              itemId={item.itemId}
+              uniqueId={item.uniqueId}
               text={item.name}
               price={item.price}
               image={item.image}

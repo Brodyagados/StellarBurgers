@@ -20,7 +20,7 @@ type TAddIngredientAction = {
 
 type TRemoveAction = {
   type: typeof REMOVE_INGREDIENT_FROM_CONSTRUCTOR;
-  payload: number;
+  payload: string;
 };
 
 type TSetIngredientsAction = {
@@ -49,13 +49,13 @@ export const ingredientsInConstructorReducer = (state = initialState, action: TA
     case ADD_INGREDIENT_IN_CONSTRUCTOR: {
       return {
         ...state,
-        ingredients: [...state.ingredients, { ...action.payload, itemId: Math.random() }]
+        ingredients: [...state.ingredients, action.payload]
       };
     }
     case REMOVE_INGREDIENT_FROM_CONSTRUCTOR: {
       return {
         ...state,
-        ingredients: state.ingredients.filter((item) => item.itemId !== action.payload)
+        ingredients: state.ingredients.filter((item) => item.uniqueId !== action.payload)
       };
     }
     case SET_INGREDIENTS_IN_CONSTRUCTOR: {
