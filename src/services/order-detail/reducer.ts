@@ -40,12 +40,13 @@ export const orderDetailReducer = (state = initialState, action: TAction) => {
       return {
         ...state,
         isLoading: false,
-        number: action.payload
+        number: action.payload,
+        error: null
       };
     }
     case SUBMIT_ORDER_ERROR: {
       return {
-        ...state,
+        number: null,
         isLoading: false,
         error: action.payload
       };

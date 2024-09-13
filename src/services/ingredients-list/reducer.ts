@@ -54,14 +54,16 @@ export const ingredientsListReducer = (state = initialState, action: TAction) =>
       return {
         ...state,
         ingredients: action.payload,
-        isLoading: false
+        isLoading: false,
+        error: null
       };
     }
     case GET_INGREDIENTS_LIST_ERROR: {
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: action.payload,
+        ingredients: []
       };
     }
     case ADD_INGREDIENT_COUNT: {
