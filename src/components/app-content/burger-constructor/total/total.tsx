@@ -3,8 +3,10 @@ import styles from './total.module.css';
 import { useState } from 'react';
 import { Modal } from '../../../modal';
 import OrderDetails from '../order-details/order-details';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { submitOrder } from '../../../../services/order-detail/actions';
+import { getIngredientsInConstructorSelector } from '../../../../services/ingredients-in-constructor/selectors';
+import { TIngredientsInConstructorState } from '../../../../services/ingredients-in-constructor/reducer';
 
 type TotalProps = {
   value: number;
@@ -13,11 +15,14 @@ type TotalProps = {
 const Total = ({ value }: TotalProps) => {
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const { bun, ingredients } = useSelector<TIngredientsInConstructorState, TIngredientsInConstructorState>(
+    getIngredientsInConstructorSelector
+  );
 
   const handleShowClick = () => {
     // TODO: доработать типизацию на 5 спринте!!!
     //@ts-ignore
-    dispatch(submitOrder([])); // TODO: подключить стор для выбранных ингредиентов
+    dispatch(submitOrder([bun!._id, ...ingredients.map((item) => item._id), bun!._id]));
     setShowDetail(true);
   };
   const handleCloseClick = () => setShowDetail(false);
