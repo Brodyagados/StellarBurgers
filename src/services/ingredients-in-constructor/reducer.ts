@@ -3,10 +3,11 @@ import {
   REMOVE_INGREDIENT_FROM_CONSTRUCTOR,
   ADD_BUN_IN_CONSTRUCTOR,
   ADD_INGREDIENT_IN_CONSTRUCTOR,
-  SET_INGREDIENTS_IN_CONSTRUCTOR
+  SET_INGREDIENTS_IN_CONSTRUCTOR,
+  CLEAR_INGREDIENTS_IN_CONSTRUCTOR
 } from './actions';
 
-type TAction = TAddBunAction | TAddIngredientAction | TRemoveAction | TSetIngredientsAction;
+type TAction = TAddBunAction | TAddIngredientAction | TRemoveAction | TSetIngredientsAction | TClearAction;
 
 type TAddBunAction = {
   type: typeof ADD_BUN_IN_CONSTRUCTOR;
@@ -26,6 +27,10 @@ type TRemoveAction = {
 type TSetIngredientsAction = {
   type: typeof SET_INGREDIENTS_IN_CONSTRUCTOR;
   payload: ConstructorIngredientModel[];
+};
+
+type TClearAction = {
+  type: typeof CLEAR_INGREDIENTS_IN_CONSTRUCTOR;
 };
 
 export type TIngredientsInConstructorState = {
@@ -62,6 +67,11 @@ export const ingredientsInConstructorReducer = (state = initialState, action: TA
       return {
         ...state,
         ingredients: action.payload
+      };
+    }
+    case CLEAR_INGREDIENTS_IN_CONSTRUCTOR: {
+      return {
+        ...initialState
       };
     }
     default: {

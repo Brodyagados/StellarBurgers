@@ -5,6 +5,7 @@ export const ADD_BUN_IN_CONSTRUCTOR = 'INGREDIENT_IN_CONSTRUCTOR/ADD_BUN_IN_CONS
 export const ADD_INGREDIENT_IN_CONSTRUCTOR = 'INGREDIENT_IN_CONSTRUCTOR/ADD_INGREDIENT_IN_CONSTRUCTOR';
 export const REMOVE_INGREDIENT_FROM_CONSTRUCTOR = 'INGREDIENT_IN_CONSTRUCTOR/REMOVE_INGREDIENT_FROM_CONSTRUCTOR';
 export const SET_INGREDIENTS_IN_CONSTRUCTOR = 'INGREDIENT_IN_CONSTRUCTOR/SET_INGREDIENTS_IN_CONSTRUCTOR';
+export const CLEAR_INGREDIENTS_IN_CONSTRUCTOR = 'INGREDIENT_IN_CONSTRUCTOR/CLEAR_INGREDIENTS_IN_CONSTRUCTOR';
 
 export const addBunInConstructor = (bun: IngredientModel) => ({
   type: ADD_BUN_IN_CONSTRUCTOR,
@@ -24,4 +25,8 @@ export const removeIngredientInConstructor = (uniqueId: string) => ({
 export const setIngredientsInConstructor = (ingredients: ConstructorIngredientModel[]) => ({
   type: SET_INGREDIENTS_IN_CONSTRUCTOR,
   payload: ingredients
+});
+
+export const clearIngredientsInConstructor = () => ({
+  type: CLEAR_INGREDIENTS_IN_CONSTRUCTOR
 });

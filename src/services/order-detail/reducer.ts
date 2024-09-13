@@ -16,7 +16,7 @@ type TErrorAction = {
   payload: string;
 };
 
-type TOrderDetailState = {
+export type TOrderDetailState = {
   number: number | null;
   isLoading: boolean;
   error: string | null;
