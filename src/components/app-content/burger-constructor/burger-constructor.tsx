@@ -1,5 +1,5 @@
 import styles from './burger-constructor.module.css';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { DraggableConstructorElement } from './draggable-constructor-element';
 import { Total } from './total';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +16,22 @@ const BurgerConstructor = () => {
   const { bun, ingredients } = useSelector<TIngredientsInConstructorState, TIngredientsInConstructorState>(
     getIngredientsInConstructorSelector
   );
+
+  const handleOnDropBun = useCallback(
+    (item: IngredientModel) => {
+      dispatch(addBunInConstructor(item));
+      if (bun) {
+        dispatch(addIngredientCount(bun._id, -2));
+      }
+      dispatch(addIngredientCount(item._id, 2));
+    },
+    [bun]
+  );
+
+  const handleOnDropIngredient = useCallback((item: IngredientModel) => {
+    dispatch(addIngredientInConstructor(item));
+    dispatch(addIngredientCount(item._id, 1));
+  }, []);
 
   const totalPrice = useMemo<number>(
     () => ingredients.reduce<number>((result, currentValue) => (result += currentValue.price), 0) + (bun ? 2 * bun.price : 0),
@@ -36,19 +52,6 @@ const BurgerConstructor = () => {
     accept: 'bun',
     drop: handleOnDropBun
   });
-
-  function handleOnDropBun(item: IngredientModel) {
-    dispatch(addBunInConstructor(item));
-    if (bun) {
-      dispatch(addIngredientCount(bun._id, -2));
-    }
-    dispatch(addIngredientCount(item._id, 2));
-  }
-
-  function handleOnDropIngredient(item: IngredientModel) {
-    dispatch(addIngredientInConstructor(item));
-    dispatch(addIngredientCount(item._id, 1));
-  }
 
   return (
     <div className={`${styles.container} pt-25`}>
