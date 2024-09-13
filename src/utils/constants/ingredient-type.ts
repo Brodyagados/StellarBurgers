@@ -5,8 +5,8 @@ type IngredientTypeData = {
 
 export const ingredientType: Record<string, string> = {
   Bun: 'bun',
-  Main: 'main',
-  Sauce: 'sauce'
+  Sauce: 'sauce',
+  Main: 'main'
 };
 
 export const ingredientTypeDescription: Record<string, string> = {

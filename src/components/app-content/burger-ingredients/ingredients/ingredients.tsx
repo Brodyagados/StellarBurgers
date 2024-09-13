@@ -1,6 +1,6 @@
 import styles from './ingredients.module.css';
 import { useMemo } from 'react';
-import { getIngredientTypeDataList } from '../../../../utils/constants';
+import { getIngredientTypeDataList, ingredientType } from '../../../../utils/constants';
 import { Group } from './group';
 import { IngredientModel } from '../../../../models';
 import { Modal } from '../../../modal';
@@ -13,7 +13,14 @@ import { getIngredientDetailSelector } from '../../../../services/ingredient-det
 
 type IngredientsByTypeModel = Record<string, IngredientModel[]>;
 
-const Ingredients = () => {
+type TIngreientsProps = {
+  bunRef: React.LegacyRef<HTMLLIElement>;
+  sauceRef: React.LegacyRef<HTMLLIElement>;
+  mainRef: React.LegacyRef<HTMLLIElement>;
+  onScroll: () => void;
+};
+
+const Ingredients = ({ bunRef, sauceRef, mainRef, onScroll }: TIngreientsProps) => {
   const { ingredients, isLoading, error } = useSelector<TIngredientsListState, TIngredientsListState>(getIngredientsSelector);
 
   const ingredientDetail = useSelector(getIngredientDetailSelector);
@@ -49,9 +56,9 @@ const Ingredients = () => {
 
   return (
     <>
-      <ul className={`${styles.scrollableList} mt-10`}>
+      <ul className={`${styles.scrollableList} mt-10`} onScroll={onScroll}>
         {getIngredientTypeDataList().map(({ value: type, description }) => (
-          <li key={type}>
+          <li key={type} ref={type === ingredientType.Bun ? bunRef : type === ingredientType.Sauce ? sauceRef : mainRef}>
             <Group text={description} items={ingredientsByType[type] ?? []} />
           </li>
         ))}
