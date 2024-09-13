@@ -1,9 +1,9 @@
-import { SUBMIT_ORDER_LOADING, SUBMIT_ORDER_SUCCESS, SUBMIT_ORDER_ERROR } from './actions';
+import { SUBMIT_ORDER_REQUEST, SUBMIT_ORDER_SUCCESS, SUBMIT_ORDER_ERROR } from './actions';
 
 type TAction = TLoadingAction | TSuccessAction | TErrorAction;
 
 type TLoadingAction = {
-  type: typeof SUBMIT_ORDER_LOADING;
+  type: typeof SUBMIT_ORDER_REQUEST;
 };
 
 type TSuccessAction = {
@@ -30,7 +30,7 @@ const initialState: TOrderDetailState = {
 
 export const orderDetailReducer = (state = initialState, action: TAction) => {
   switch (action.type) {
-    case SUBMIT_ORDER_LOADING: {
+    case SUBMIT_ORDER_REQUEST: {
       return {
         ...state,
         isLoading: true

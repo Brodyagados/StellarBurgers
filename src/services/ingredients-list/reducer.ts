@@ -2,14 +2,14 @@ import { IngredientModel } from '../../models';
 import {
   ADD_INGREDIENT_COUNT,
   GET_INGREDIENTS_LIST_ERROR,
-  GET_INGREDIENTS_LIST_LOADING,
+  GET_INGREDIENTS_LIST_REQUEST,
   GET_INGREDIENTS_LIST_SUCCESS
 } from './actions';
 
 type TAction = TLoadingAction | TSuccessAction | TErrorAction | TAddAction;
 
 type TLoadingAction = {
-  type: typeof GET_INGREDIENTS_LIST_LOADING;
+  type: typeof GET_INGREDIENTS_LIST_REQUEST;
 };
 
 type TSuccessAction = {
@@ -44,7 +44,7 @@ const initialState: TIngredientsListState = {
 
 export const ingredientsListReducer = (state = initialState, action: TAction) => {
   switch (action.type) {
-    case GET_INGREDIENTS_LIST_LOADING: {
+    case GET_INGREDIENTS_LIST_REQUEST: {
       return {
         ...state,
         isLoading: true

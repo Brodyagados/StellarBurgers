@@ -1,7 +1,7 @@
 import { IngredientModel } from '../../models';
 
-export const SET_INGREDIENT_DETAIL = 'SET_INGREDIENT_DETAIL';
-export const REMOVE_INGREDIENT_DETAIL = 'REMOVE_INGREDIENT_DETAIL';
+export const SET_INGREDIENT_DETAIL = 'INGREDIENT_DETAIL/SET_INGREDIENT_DETAIL';
+export const REMOVE_INGREDIENT_DETAIL = 'INGREDIENT_DETAIL/REMOVE_INGREDIENT_DETAIL';
 
 export const setIngredientDetail = (ingredient: IngredientModel) => ({
   type: SET_INGREDIENT_DETAIL,

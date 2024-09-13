@@ -2,12 +2,12 @@ import { Dispatch, UnknownAction } from 'redux';
 import { OrderDetailModel } from '../../models';
 import apiClient from '../../utils/api-client';
 
-export const SUBMIT_ORDER_LOADING = 'SUBMIT_ORDER_LOADING';
-export const SUBMIT_ORDER_SUCCESS = 'SUBMIT_ORDER_SUCCESS';
-export const SUBMIT_ORDER_ERROR = 'SUBMIT_ORDER_ERROR';
+export const SUBMIT_ORDER_REQUEST = 'ORDER_DETAIL/SUBMIT_ORDER_REQUEST';
+export const SUBMIT_ORDER_SUCCESS = 'ORDER_DETAIL/SUBMIT_ORDER_SUCCESS';
+export const SUBMIT_ORDER_ERROR = 'ORDER_DETAIL/SUBMIT_ORDER_ERROR';
 
 export const submitOrder = (ingredients: string[]) => async (dispatch: Dispatch<UnknownAction>) => {
-  dispatch({ type: SUBMIT_ORDER_LOADING });
+  dispatch({ type: SUBMIT_ORDER_REQUEST });
 
   try {
     const data = await apiClient.request<OrderDetailModel>('/orders', { method: 'POST', body: JSON.stringify({ ingredients }) });

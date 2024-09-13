@@ -2,13 +2,13 @@ import { Dispatch, UnknownAction } from 'redux';
 import { IngredientsListModel } from '../../models';
 import apiClient from '../../utils/api-client';
 
-export const GET_INGREDIENTS_LIST_LOADING = 'GET_INGREDIENTS_LIST_LOADING';
-export const GET_INGREDIENTS_LIST_SUCCESS = 'GET_INGREDIENTS_LIST_SUCCESS';
-export const GET_INGREDIENTS_LIST_ERROR = 'GET_INGREDIENTS_LIST_ERROR';
-export const ADD_INGREDIENT_COUNT = 'ADD_INGREDIENT_COUNT';
+export const GET_INGREDIENTS_LIST_REQUEST = 'INGREDIENT_LIST/GET_INGREDIENTS_LIST_REQUEST';
+export const GET_INGREDIENTS_LIST_SUCCESS = 'INGREDIENT_LIST/GET_INGREDIENTS_LIST_SUCCESS';
+export const GET_INGREDIENTS_LIST_ERROR = 'INGREDIENT_LIST/GET_INGREDIENTS_LIST_ERROR';
+export const ADD_INGREDIENT_COUNT = 'INGREDIENT_LIST/ADD_INGREDIENT_COUNT';
 
 export const getIngredientsList = () => async (dispatch: Dispatch<UnknownAction>) => {
-  dispatch({ type: GET_INGREDIENTS_LIST_LOADING });
+  dispatch({ type: GET_INGREDIENTS_LIST_REQUEST });
 
   try {
     const data = await apiClient.request<IngredientsListModel>('/ingredients');
