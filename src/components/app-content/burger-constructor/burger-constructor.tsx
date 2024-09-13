@@ -68,7 +68,7 @@ const BurgerConstructor = () => {
       </div>
       <div className={`${styles.scrollableList} mt-4 mb-4`} ref={dropIngredientRef}>
         {ingredients.length > 0 ? (
-          ingredients.map((item) => (
+          ingredients.map((item, index) => (
             <DraggableConstructorElement
               key={item.itemId}
               id={item._id}
@@ -76,6 +76,7 @@ const BurgerConstructor = () => {
               text={item.name}
               price={item.price}
               image={item.image}
+              index={index}
             />
           ))
         ) : (
