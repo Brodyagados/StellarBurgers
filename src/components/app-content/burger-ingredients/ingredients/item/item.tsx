@@ -3,12 +3,23 @@ import { IngredientModel } from '../../../../../models';
 import styles from './item.module.css';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { setIngredientDetail } from '../../../../../services/ingredient-detail/actions';
+import { useDrag } from 'react-dnd';
 
 type ItemProps = {
   data: IngredientModel;
 };
 
 const Item = ({ data }: ItemProps) => {
+  const [, dragBunRef] = useDrag({
+    type: 'bun',
+    item: data
+  });
+
+  const [, dragIngredientRef] = useDrag({
+    type: 'ingredient',
+    item: data
+  });
+
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -16,7 +27,7 @@ const Item = ({ data }: ItemProps) => {
   };
 
   return (
-    <div className={styles.container} onClick={handleClick}>
+    <div className={styles.container} onClick={handleClick} ref={data.type === 'bun' ? dragBunRef : dragIngredientRef}>
       <img className={`${styles.image} mx-4`} src={data.image} alt={`${data.name}.`} />
       <Counter count={1} size='default' extraClass='m-1' />
       <div className={styles.price}>
