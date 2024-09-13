@@ -15,3 +15,5 @@ export type IngredientModel = {
   calories: number;
   count: number;
 };
+
+export type ConstructorIngredientModel = IngredientModel & { itemId: number };

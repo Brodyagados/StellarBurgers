@@ -1,4 +1,4 @@
-import { IngredientModel } from '../../models';
+import { ConstructorIngredientModel, IngredientModel } from '../../models';
 import { REMOVE_INGREDIENT_FROM_CONSTRUCTOR, ADD_BUN_IN_CONSTRUCTOR, ADD_INGREDIENT_IN_CONSTRUCTOR } from './actions';
 
 type TAction = TAddBunAction | TAddIngredientAction | TRemoveAction;
@@ -15,12 +15,12 @@ type TAddIngredientAction = {
 
 type TRemoveAction = {
   type: typeof REMOVE_INGREDIENT_FROM_CONSTRUCTOR;
-  payload: string;
+  payload: number;
 };
 
 export type TIngredientsInConstructorState = {
   bun: IngredientModel | null;
-  ingredients: IngredientModel[];
+  ingredients: ConstructorIngredientModel[];
 };
 
 const initialState: TIngredientsInConstructorState = {
@@ -39,13 +39,13 @@ export const ingredientsInConstructorReducer = (state = initialState, action: TA
     case ADD_INGREDIENT_IN_CONSTRUCTOR: {
       return {
         ...state,
-        ingredients: [...state.ingredients, action.payload]
+        ingredients: [...state.ingredients, { ...action.payload, itemId: Math.random() }]
       };
     }
     case REMOVE_INGREDIENT_FROM_CONSTRUCTOR: {
       return {
         ...state,
-        ingredient: state.ingredients.filter((item) => item._id !== action.payload)
+        ingredients: state.ingredients.filter((item) => item.itemId !== action.payload)
       };
     }
     default: {

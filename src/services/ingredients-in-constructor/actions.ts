@@ -14,6 +14,7 @@ export const addIngredientInConstructor = (ingredient: IngredientModel) => ({
   payload: ingredient
 });
 
-export const removeIngredientInConstructor = () => ({
-  type: REMOVE_INGREDIENT_FROM_CONSTRUCTOR
+export const removeIngredientInConstructor = (itemId: number) => ({
+  type: REMOVE_INGREDIENT_FROM_CONSTRUCTOR,
+  payload: itemId
 });

@@ -54,7 +54,14 @@ const BurgerConstructor = () => {
     <div className={`${styles.container} pt-25`}>
       <div ref={dropBunTopRef}>
         {bun ? (
-          <DraggableConstructorElement type='top' text={`${bun.name} (верх)`} price={bun.price} image={bun.image} isLocked />
+          <DraggableConstructorElement
+            id={bun._id}
+            type='top'
+            text={`${bun.name} (верх)`}
+            price={bun.price}
+            image={bun.image}
+            isLocked
+          />
         ) : (
           <IngredientsContainer type='bun-top' />
         )}
@@ -62,7 +69,14 @@ const BurgerConstructor = () => {
       <div className={`${styles.scrollableList} mt-4 mb-4`} ref={dropIngredientRef}>
         {ingredients.length > 0 ? (
           ingredients.map((item) => (
-            <DraggableConstructorElement key={item._id} text={item.name} price={item.price} image={item.image} />
+            <DraggableConstructorElement
+              key={item.itemId}
+              id={item._id}
+              itemId={item.itemId}
+              text={item.name}
+              price={item.price}
+              image={item.image}
+            />
           ))
         ) : (
           <IngredientsContainer type='ingredient' />
@@ -70,7 +84,14 @@ const BurgerConstructor = () => {
       </div>
       <div ref={dropBunBottomRef}>
         {bun ? (
-          <DraggableConstructorElement type='bottom' text={`${bun.name} (низ)`} price={bun.price} image={bun.image} isLocked />
+          <DraggableConstructorElement
+            id={bun._id}
+            type='bottom'
+            text={`${bun.name} (низ)`}
+            price={bun.price}
+            image={bun.image}
+            isLocked
+          />
         ) : (
           <IngredientsContainer type='bun-bottom' />
         )}
