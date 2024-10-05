@@ -6,7 +6,7 @@ import { routes } from '../../utils/constants';
 
 type TPasswordInputType = 'password' | 'text';
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,4 +47,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

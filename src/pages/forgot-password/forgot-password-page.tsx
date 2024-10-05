@@ -5,7 +5,7 @@ import styles from './forgot-password-page.module.css';
 import { routes } from '../../utils/constants';
 import { AccountApi } from '../../api';
 
-const LoginPage = () => {
+const ForgotPasswordPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
 
@@ -36,4 +36,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage;
