@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.content {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.left {
+  width: 320px;
+}
+
+.links {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-top: 16px;
+}
