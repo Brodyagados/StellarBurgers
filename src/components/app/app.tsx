@@ -1,29 +1,22 @@
-import { useEffect, useState } from 'react';
-import apiClient from '../../utils/api-client';
-import { IngredientModel } from '../../models';
+import { useEffect } from 'react';
 import { AppHeader } from '../app-header';
 import { AppContent } from '../app-content';
+import { useDispatch } from 'react-redux';
+import { getIngredientsList } from '../../services/ingredients-list/actions';
 
 function App() {
-  const [ingredients, setIngredients] = useState<IngredientModel[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const getIngredients = async () => {
-      try {
-        const data = await apiClient.request<IngredientModel[]>('/ingredients');
-        setIngredients(data);
-      } catch (e) {
-        alert(`Ошибка получения списка ингредиентов (${(e as Error).message})`);
-      }
-    };
-
-    getIngredients();
+    // TODO: доработать типизацию на 5 спринте!!!
+    //@ts-ignore
+    dispatch(getIngredientsList());
   }, []);
 
   return (
     <>
       <AppHeader />
-      <AppContent ingredients={ingredients} />
+      <AppContent />
     </>
   );
 }

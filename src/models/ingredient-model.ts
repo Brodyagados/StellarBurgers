@@ -1,3 +1,7 @@
+export type IngredientsListModel = {
+  data: IngredientModel[];
+};
+
 export type IngredientModel = {
   _id: string;
   name: string;
@@ -9,4 +13,7 @@ export type IngredientModel = {
   fat: number;
   carbohydrates: number;
   calories: number;
+  count: number;
 };
+
+export type ConstructorIngredientModel = IngredientModel & { uniqueId: string };
