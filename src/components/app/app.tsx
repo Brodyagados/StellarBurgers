@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getIngredientsList } from '../../services/ingredients-list/actions';
-import { HomePage, LoginPage, RegisterPage } from '../../pages';
+import { ForgotPasswordPage, HomePage, LoginPage, RegisterPage } from '../../pages';
 import { routes } from '../../utils/constants';
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
         <Route path={routes.HOME} element={<HomePage />} />
         <Route path={routes.LOGIN} element={<LoginPage />} />
         <Route path={routes.REGISTER} element={<RegisterPage />} />
+        <Route path={routes.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
       </Routes>
     </Router>
   );
