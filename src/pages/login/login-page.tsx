@@ -1,4 +1,4 @@
-import { Button, EmailInput, Input, ShowIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Button, EmailInput, Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import { ChangeEvent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './login-page.module.css';
@@ -11,7 +11,6 @@ const LoginPage = () => {
   const [passwordInputType, setPasswordInputType] = useState<TPasswordInputType>('password');
 
   const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
-
   const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
   const onPasswordShowClick = useCallback(
