@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { AppHeader } from '../app-header';
-import { AppContent } from '../app-content';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getIngredientsList } from '../../services/ingredients-list/actions';
+import { HomePage } from '../../pages';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,10 +14,11 @@ function App() {
   }, []);
 
   return (
-    <>
-      <AppHeader />
-      <AppContent />
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      </Routes>
+    </Router>
   );
 }
 
