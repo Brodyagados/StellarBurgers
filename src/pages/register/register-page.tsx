@@ -2,6 +2,7 @@ import { Button, EmailInput, Input } from '@ya.praktikum/react-developer-burger-
 import { ChangeEvent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './register-page.module.css';
+import { routes } from '../../utils/constants';
 
 type TPasswordInputType = 'password' | 'text';
 
@@ -39,7 +40,7 @@ const LoginPage = () => {
       </div>
       <div className={styles.links}>
         <span className='text text_type_main-default text_color_inactive'>
-          Уже зарегистрированы? <Link to='/login'>Войти</Link>
+          Уже зарегистрированы? <Link to={routes.LOGIN}>Войти</Link>
         </span>
       </div>
     </div>

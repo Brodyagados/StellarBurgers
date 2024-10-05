@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getIngredientsList } from '../../services/ingredients-list/actions';
 import { HomePage, LoginPage, RegisterPage } from '../../pages';
+import { routes } from '../../utils/constants';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,9 +17,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
+        <Route path={routes.HOME} element={<HomePage />} />
+        <Route path={routes.LOGIN} element={<LoginPage />} />
+        <Route path={routes.REGISTER} element={<RegisterPage />} />
       </Routes>
     </Router>
   );
