@@ -1,4 +1,4 @@
-import { TResetPasswordDto, TSendTokenForResetPasswordDto, TResetPasswordModel } from '../models';
+import { TResetPasswordDto, TSendTokenForResetPasswordDto, TResetPasswordModel, TSignUpDto, TSignUpModel } from '../models';
 import apiClient from '../utils/api-client';
 
 export class AccountApi {
@@ -7,4 +7,7 @@ export class AccountApi {
 
   static resetPassword = (data: TResetPasswordDto) =>
     apiClient.request<TResetPasswordModel>('/password-reset/reset', { method: 'post', body: JSON.stringify(data) });
+
+  static signUp = (data: TSignUpDto) =>
+    apiClient.request<TSignUpModel>('/auth/register', { method: 'post', body: JSON.stringify(data) });
 }
