@@ -12,7 +12,7 @@ const LoginPage = () => {
   const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
 
   const onSubmit = useCallback(async () => {
-    const { success } = await AccountApi.resetPassword({ email });
+    const { success } = await AccountApi.sendTokenForResetPassword({ email });
     if (success) {
       navigate(routes.RESET_PASSWORD);
     }

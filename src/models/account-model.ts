@@ -1,4 +1,4 @@
-export type TResetPasswordDto = {
+export type TSendTokenForResetPasswordDto = {
   email: string;
 };
 
