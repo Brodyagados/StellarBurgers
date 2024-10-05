@@ -1,13 +1,19 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getIngredientsList } from '../../services/ingredients-list/actions';
 import { ForgotPasswordPage, HomePage, LoginPage, ProfilePage, RegisterPage, ResetPasswordPage } from '../../pages';
 import { routes } from '../../utils/constants';
 import { HomeLayout, ProfileLayout } from '../../layouts';
+import { IngredientDetails } from '../app-content/burger-ingredients/ingredient-details';
+import { Modal } from '../modal';
 
 function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const backgroundLocation = location.state && location.state.backgroundLocation;
 
   useEffect(() => {
     // TODO: доработать типизацию на 5 спринте!!!
@@ -15,9 +21,13 @@ function App() {
     dispatch(getIngredientsList());
   }, []);
 
+  const handleIngredientDetailCloseClick = () => {
+    navigate(-1);
+  };
+
   return (
-    <Router>
-      <Routes>
+    <>
+      <Routes location={backgroundLocation || location}>
         <Route element={<HomeLayout />}>
           <Route path={routes.HOME} element={<HomePage />} />
           <Route path={routes.LOGIN} element={<LoginPage />} />
@@ -28,10 +38,24 @@ function App() {
             <Route path={routes.PROFILE} element={<ProfilePage />} />
             <Route path={routes.PROFILE_ORDERS} element='' />
           </Route>
+          <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
           <Route path={routes.ORDERS} element='' />
         </Route>
       </Routes>
-    </Router>
+
+      {backgroundLocation && (
+        <Routes>
+          <Route
+            path={routes.INGREDIENT}
+            element={
+              <Modal title='Детали ингредиента' onCloseClick={handleIngredientDetailCloseClick}>
+                <IngredientDetails />
+              </Modal>
+            }
+          />
+        </Routes>
+      )}
+    </>
   );
 }
 
