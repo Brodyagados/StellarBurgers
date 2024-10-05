@@ -1,10 +1,5 @@
-import { AppContent, AppHeader } from '../../components';
+import { AppContent } from '../../components';
 
-const HomePage = () => (
-  <>
-    <AppHeader />
-    <AppContent />
-  </>
-);
+const HomePage = () => <AppContent />;
 
 export default HomePage;
