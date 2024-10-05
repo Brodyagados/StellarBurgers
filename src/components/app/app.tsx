@@ -18,14 +18,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path={routes.HOME} element={<HomePage />} />
         <Route element={<HomeLayout />}>
           <Route path={routes.HOME} element={<HomePage />} />
+          <Route path={routes.LOGIN} element={<LoginPage />} />
+          <Route path={routes.REGISTER} element={<RegisterPage />} />
+          <Route path={routes.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
+          <Route path={routes.RESET_PASSWORD} element={<ResetPasswordPage />} />
+          <Route path={routes.ORDERS} element='' />
         </Route>
-        <Route path={routes.LOGIN} element={<LoginPage />} />
-        <Route path={routes.REGISTER} element={<RegisterPage />} />
-        <Route path={routes.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
-        <Route path={routes.RESET_PASSWORD} element={<ResetPasswordPage />} />
       </Routes>
     </Router>
   );

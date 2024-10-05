@@ -9,7 +9,7 @@ type NavigationLinkProps = {
 const NavigationLink = ({ icon, text, isActive = false }: NavigationLinkProps) => (
   <div className={`${styles.container} p-5`}>
     {icon}
-    <span className={`text text_type_main-default ${!isActive ? 'text_color_inactive' : ''}`}>{text}</span>
+    <span className={`text text_type_main-default ${!isActive ? 'text_color_inactive' : styles.active}`}>{text}</span>
   </div>
 );
 
