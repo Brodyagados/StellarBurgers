@@ -47,4 +47,22 @@ export class AccountApi {
         localStorage.setItem('accessToken', accessToken);
         return data;
       });
+
+  static logout = () =>
+    apiClient
+      .request<TSignInModel>('/auth/logout', {
+        method: 'post',
+        body: JSON.stringify({
+          token: localStorage.getItem('refreshToken')
+        })
+      })
+      .then((data) => {
+        const { success } = data;
+        if (!success) {
+          return Promise.reject(data);
+        }
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('accessToken');
+        return data;
+      });
 }
