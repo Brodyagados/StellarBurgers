@@ -65,4 +65,7 @@ export class AccountApi {
         localStorage.removeItem('accessToken');
         return data;
       });
+
+  static edit = (data: TSignUpDto) =>
+    apiClient.requestWithRefresh<TSignUpModel>('/auth/user', { method: 'patch', body: JSON.stringify(data) });
 }

@@ -20,7 +20,13 @@ class ApiClient {
 
   requestWithRefresh = async <T>(url: string, options?: RequestInit): Promise<T> => {
     try {
-      return this.request<T>(url, options);
+      return this.request<T>(url, {
+        ...options,
+        headers: {
+          ...options?.headers,
+          Authorization: localStorage.getItem('accessToken')!
+        }
+      });
     } catch (e) {
       if ((e as Error).message === 'jwt expired') {
         const refreshData = await AccountApi.refreshToken();
@@ -28,7 +34,7 @@ class ApiClient {
           ...options,
           headers: {
             ...options?.headers,
-            authorization: refreshData.accessToken!
+            Authorization: refreshData.accessToken!
           }
         });
       } else {
