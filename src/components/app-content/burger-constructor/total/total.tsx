@@ -10,12 +10,17 @@ import { TIngredientsInConstructorState } from '../../../../services/ingredients
 import { TOrderDetailState } from '../../../../services/order-detail/reducer';
 import { clearIngredientsInConstructor } from '../../../../services/ingredients-in-constructor/actions';
 import { getOrderDetailSelector } from '../../../../services/order-detail/selectors';
+import { useNavigate } from 'react-router-dom';
+import { getUserSelector } from '../../../../services/user/selectors';
+import { routes } from '../../../../utils/constants';
 
 type TotalProps = {
   value: number;
 };
 
 const Total = ({ value }: TotalProps) => {
+  const navigate = useNavigate();
+  const user = useSelector(getUserSelector);
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const dispatch = useDispatch();
   const { bun, ingredients } = useSelector<TIngredientsInConstructorState, TIngredientsInConstructorState>(
@@ -24,6 +29,11 @@ const Total = ({ value }: TotalProps) => {
   const { error } = useSelector<TOrderDetailState, TOrderDetailState>(getOrderDetailSelector);
 
   const handleShowClick = () => {
+    if (!user) {
+      navigate(routes.LOGIN);
+      return;
+    }
+
     // TODO: доработать типизацию на 5 спринте!!!
     //@ts-ignore
     dispatch(submitOrder([bun!._id, ...ingredients.map((item) => item._id), bun!._id]));
