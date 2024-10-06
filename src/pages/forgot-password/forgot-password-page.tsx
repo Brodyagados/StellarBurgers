@@ -14,6 +14,7 @@ const ForgotPasswordPage = () => {
   const onSubmit = useCallback(async () => {
     const { success } = await AccountApi.sendTokenForResetPassword({ email });
     if (success) {
+      localStorage.setItem('isResetPassword', 'true');
       navigate(routes.RESET_PASSWORD);
     }
   }, [email]);

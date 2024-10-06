@@ -17,6 +17,7 @@ const ResetPasswordPage = () => {
     const { success } = await AccountApi.resetPassword({ password, token });
     if (success) {
       navigate(routes.LOGIN);
+      localStorage.removeItem('isResetPassword');
     }
   }, [password, token]);
 

@@ -26,6 +26,10 @@ const ProtectedRoute = ({ component, onlyUnAuth = false }: TProtectedRouteProps)
     return <Navigate to={routes.LOGIN} state={{ from: location }} />;
   }
 
+  if (location.pathname === routes.RESET_PASSWORD && !localStorage.getItem('isResetPassword')) {
+    return <Navigate to={routes.LOGIN} />;
+  }
+
   return component;
 };
 
