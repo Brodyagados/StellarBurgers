@@ -44,7 +44,7 @@ const ProfilePage = () => {
     <div className={styles.container}>
       <Input name='name' value={name ?? ''} placeholder='Имя' onChange={onNameChange} />
       <EmailInput name='email' value={email ?? ''} onChange={onEmailChange} />
-      <PasswordInput name='password' value={password} onChange={onPasswordChange} />
+      <PasswordInput name='password' value={password ?? ''} onChange={onPasswordChange} />
       {actionsVisible && (
         <div className={styles.actions}>
           <Button htmlType='button' type='secondary' onClick={handleResetClick}>
