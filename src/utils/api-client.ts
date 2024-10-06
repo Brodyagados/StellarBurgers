@@ -11,11 +11,12 @@ class ApiClient {
       },
       ...options
     });
+
     if (!response.ok) {
-      throw new Error(response.statusText);
+      return response.json().then((error) => Promise.reject(error));
     }
-    const data = await (response.json() as Promise<T>);
-    return data;
+
+    return response.json() as Promise<T>;
   };
 
   requestWithRefresh = async <T>(url: string, options?: RequestInit): Promise<T> => {
