@@ -68,4 +68,6 @@ export class AccountApi {
 
   static edit = (data: TSignUpDto) =>
     apiClient.requestWithRefresh<TSignUpModel>('/auth/user', { method: 'patch', body: JSON.stringify(data) });
+
+  static get = () => apiClient.requestWithRefresh<TSignUpModel>('/auth/user');
 }

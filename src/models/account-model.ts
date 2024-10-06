@@ -24,10 +24,7 @@ export type TSignUpDto = {
 };
 
 export type TSignUpModel = TSignInModel & {
-  user: {
-    name: string;
-    email: string;
-  };
+  user: TUserModel;
 };
 
 export type TSignInModel = {
@@ -35,4 +32,15 @@ export type TSignInModel = {
   accessToken: string | null;
   refreshToken: string | null;
   message: string | null;
+};
+
+export type TUserModel = {
+  name: string;
+  email: string;
+};
+
+export type TFullUserModel = {
+  name: string;
+  email: string;
+  password: string;
 };

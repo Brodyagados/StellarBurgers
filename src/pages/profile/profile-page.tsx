@@ -1,18 +1,11 @@
 import { Button, EmailInput, Input, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import styles from './profile-page.module.css';
-import { useSelector } from 'react-redux';
-import { getUserSelector } from '../../services/user/selectors';
 import { AccountApi } from '../../api';
+import { TFullUserModel } from '../../models';
 
 const ProfilePage = () => {
-  const data = useSelector(getUserSelector);
-
-  const initialState = {
-    ...data,
-    password: ''
-  };
-
+  const [initialState, setInitialState] = useState<TFullUserModel>({ name: '', email: '', password: '' });
   const [actionsVisible, setActionsVisible] = useState(false);
   const [name, setName] = useState(initialState.name);
   const [email, setEmail] = useState(initialState.email);
@@ -45,6 +38,14 @@ const ProfilePage = () => {
       setActionsVisible(false);
     }
   }, [name, email, password]);
+
+  useEffect(() => {
+    AccountApi.get().then(({ user }) => {
+      setInitialState({ ...user, password: '' });
+      setName(user.name);
+      setEmail(user.email);
+    });
+  }, []);
 
   return (
     <div className={styles.container}>
