@@ -31,7 +31,7 @@ const initialState: TUserState = {
   error: null
 };
 
-export const orderDetailReducer = (state = initialState, action: TAction) => {
+export const userReducer = (state = initialState, action: TAction) => {
   switch (action.type) {
     case USER_REQUEST: {
       return {

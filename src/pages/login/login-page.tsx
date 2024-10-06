@@ -3,10 +3,12 @@ import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './login-page.module.css';
 import { routes } from '../../utils/constants';
-import { AccountApi } from '../../api';
+import { useDispatch } from 'react-redux';
+import { login } from '../../services/user/actions';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,10 +19,10 @@ const LoginPage = () => {
   const handleSubmit = useCallback(
     async (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
       e.preventDefault();
-      const { success } = await AccountApi.login({ email, password });
-      if (success) {
-        navigate(routes.HOME);
-      }
+      // TODO: доработать типизацию на 5 спринте!!!
+      //@ts-ignore
+      dispatch(login({ email, password }));
+      navigate(routes.HOME);
     },
     [email, password]
   );
