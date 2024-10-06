@@ -12,6 +12,11 @@ export type TResetPasswordModel = {
   message: string;
 };
 
+export type TLoginDto = {
+  email: string;
+  password: string;
+};
+
 export type TSignUpDto = {
   name: string;
   email: string;
