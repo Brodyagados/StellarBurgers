@@ -7,6 +7,8 @@ import { routes } from '../../utils/constants';
 import { HomeLayout, ProfileLayout } from '../../layouts';
 import { IngredientDetails } from '../app-content/burger-ingredients/ingredient-details';
 import { Modal } from '../modal';
+import { ProtectedRoute } from '../protected-route';
+import { checkUserAuth } from '../../services/user/actions';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +21,9 @@ function App() {
     // TODO: доработать типизацию на 5 спринте!!!
     //@ts-ignore
     dispatch(getIngredientsList());
+    // TODO: доработать типизацию на 5 спринте!!!
+    //@ts-ignore
+    dispatch(checkUserAuth());
   }, []);
 
   const handleIngredientDetailCloseClick = () => {
@@ -30,12 +35,12 @@ function App() {
       <Routes location={backgroundLocation || location}>
         <Route element={<HomeLayout />}>
           <Route path={routes.HOME} element={<HomePage />} />
-          <Route path={routes.LOGIN} element={<LoginPage />} />
-          <Route path={routes.REGISTER} element={<RegisterPage />} />
-          <Route path={routes.FORGOT_PASSWORD} element={<ForgotPasswordPage />} />
-          <Route path={routes.RESET_PASSWORD} element={<ResetPasswordPage />} />
+          <Route path={routes.LOGIN} element={<ProtectedRoute component={<LoginPage />} onlyUnAuth />} />
+          <Route path={routes.REGISTER} element={<ProtectedRoute component={<RegisterPage />} onlyUnAuth />} />
+          <Route path={routes.FORGOT_PASSWORD} element={<ProtectedRoute component={<ForgotPasswordPage />} onlyUnAuth />} />
+          <Route path={routes.RESET_PASSWORD} element={<ProtectedRoute component={<ResetPasswordPage />} onlyUnAuth />} />
           <Route element={<ProfileLayout />}>
-            <Route path={routes.PROFILE} element={<ProfilePage />} />
+            <Route path={routes.PROFILE} element={<ProtectedRoute component={<ProfilePage />} />} />
             <Route path={routes.PROFILE_ORDERS} element='' />
           </Route>
           <Route path={routes.INGREDIENT} element={<IngredientDetails />} />

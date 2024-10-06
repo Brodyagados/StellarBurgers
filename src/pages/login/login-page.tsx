@@ -1,13 +1,12 @@
 import { Button, EmailInput, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
 import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './login-page.module.css';
 import { routes } from '../../utils/constants';
 import { useDispatch } from 'react-redux';
 import { login } from '../../services/user/actions';
 
 const LoginPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
@@ -22,7 +21,6 @@ const LoginPage = () => {
       // TODO: доработать типизацию на 5 спринте!!!
       //@ts-ignore
       dispatch(login({ email, password }));
-      navigate(routes.HOME);
     },
     [email, password]
   );

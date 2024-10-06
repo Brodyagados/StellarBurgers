@@ -1,7 +1,7 @@
-import { TSignUpModel } from '../../models';
-import { USER_ERROR, USER_REQUEST, USER_SUCCESS } from './actions';
+import { TUserModel } from '../../models';
+import { SET_USER, SET_USER_AUTH_CHECKED, USER_ERROR, USER_REQUEST, USER_SUCCESS } from './actions';
 
-type TAction = TLoadingAction | TSuccessAction | TErrorAction;
+type TAction = TLoadingAction | TSuccessAction | TErrorAction | TSetAuthChecked | TSetUser;
 
 type TLoadingAction = {
   type: typeof USER_REQUEST;
@@ -9,7 +9,6 @@ type TLoadingAction = {
 
 type TSuccessAction = {
   type: typeof USER_SUCCESS;
-  payload: Pick<TSignUpModel, 'user'>;
 };
 
 type TErrorAction = {
@@ -17,18 +16,28 @@ type TErrorAction = {
   payload: string;
 };
 
+type TSetAuthChecked = {
+  type: typeof SET_USER_AUTH_CHECKED;
+  payload: boolean;
+};
+
+type TSetUser = {
+  type: typeof SET_USER;
+  payload: TUserModel;
+};
+
 export type TUserState = {
-  name: string | null;
-  email: string | null;
+  data: TUserModel | null;
   isLoading: boolean;
   error: string | null;
+  isAuthChecked: boolean;
 };
 
 const initialState: TUserState = {
-  name: null,
-  email: null,
+  data: null,
   isLoading: false,
-  error: null
+  error: null,
+  isAuthChecked: false
 };
 
 export const userReducer = (state = initialState, action: TAction) => {
@@ -43,16 +52,27 @@ export const userReducer = (state = initialState, action: TAction) => {
       return {
         ...state,
         isLoading: false,
-        ...action.payload,
         error: null
       };
     }
     case USER_ERROR: {
       return {
-        name: null,
-        email: null,
+        ...state,
+        data: null,
         isLoading: false,
         error: action.payload
+      };
+    }
+    case SET_USER_AUTH_CHECKED: {
+      return {
+        ...state,
+        isAuthChecked: action.payload
+      };
+    }
+    case SET_USER: {
+      return {
+        ...state,
+        data: action.payload
       };
     }
     default: {

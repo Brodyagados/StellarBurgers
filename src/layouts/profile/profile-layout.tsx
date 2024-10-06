@@ -1,18 +1,20 @@
 import styles from './profile-layout.module.css';
 import { routes } from '../../utils/constants';
 import { ProfileNavigateItem } from '../../components';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { useCallback } from 'react';
 import { AccountApi } from '../../api';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../services/user/actions';
 
 const ProfileLayout = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogout = useCallback(async () => {
     const { success } = await AccountApi.logout();
 
     if (success) {
-      navigate(routes.LOGIN);
+      dispatch(setUser(null));
     }
   }, []);
 
