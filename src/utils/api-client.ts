@@ -25,7 +25,7 @@ class ApiClient {
         ...options,
         headers: {
           ...options?.headers,
-          Authorization: localStorage.getItem('accessToken')!
+          authorization: localStorage.getItem('accessToken')!
         }
       });
     } catch (e) {
@@ -35,7 +35,7 @@ class ApiClient {
           ...options,
           headers: {
             ...options?.headers,
-            Authorization: refreshData.accessToken!
+            authorization: refreshData.accessToken!
           }
         });
       } else {

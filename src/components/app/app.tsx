@@ -41,7 +41,7 @@ function App() {
           <Route path={routes.RESET_PASSWORD} element={<ProtectedRoute component={<ResetPasswordPage />} onlyUnAuth />} />
           <Route element={<ProfileLayout />}>
             <Route path={routes.PROFILE} element={<ProtectedRoute component={<ProfilePage />} />} />
-            <Route path={routes.PROFILE_ORDERS} element='' />
+            <Route path={routes.PROFILE_ORDERS} element='' /> {/* TODO: обернуть в ProtectedRoute после реализации страницы */}
           </Route>
           <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
           <Route path={routes.ORDERS} element='' />
