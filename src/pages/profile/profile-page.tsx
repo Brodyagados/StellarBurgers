@@ -1,5 +1,5 @@
 import { Button, EmailInput, Input, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
 import styles from './profile-page.module.css';
 import { AccountApi } from '../../api';
 import { useSelector } from 'react-redux';
@@ -32,16 +32,21 @@ const ProfilePage = () => {
     setActionsVisible(false);
   };
 
-  const handleSaveChanges = useCallback(async () => {
-    const { success } = await AccountApi.edit({ name, email, password });
+  const handleSaveChanges = useCallback(
+    async (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
+      e.preventDefault();
 
-    if (success) {
-      setActionsVisible(false);
-    }
-  }, [name, email, password]);
+      const { success } = await AccountApi.edit({ name, email, password });
+
+      if (success) {
+        setActionsVisible(false);
+      }
+    },
+    [name, email, password]
+  );
 
   return (
-    <div className={styles.container}>
+    <form className={styles.container} onSubmit={handleSaveChanges}>
       <Input name='name' value={name ?? ''} placeholder='Имя' onChange={onNameChange} />
       <EmailInput name='email' value={email ?? ''} onChange={onEmailChange} />
       <PasswordInput name='password' value={password ?? ''} onChange={onPasswordChange} />
@@ -50,12 +55,10 @@ const ProfilePage = () => {
           <Button htmlType='button' type='secondary' onClick={handleResetClick}>
             Отмена
           </Button>
-          <Button htmlType='button' onClick={handleSaveChanges}>
-            Сохранить
-          </Button>
+          <Button htmlType='submit'>Сохранить</Button>
         </div>
       )}
-    </div>
+    </form>
   );
 };
 
