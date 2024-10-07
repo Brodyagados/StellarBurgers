@@ -10,6 +10,7 @@ const ProfileNavigateItem = ({ to, text }: TProfileNavigateItemProps) => (
   <NavLink
     to={to}
     className={({ isActive }) => `text text_type_main-medium ${isActive ? styles.container : 'text_color_inactive'}`}
+    end
   >
     {text}
   </NavLink>
