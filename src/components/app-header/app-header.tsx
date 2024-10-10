@@ -1,7 +1,7 @@
 import styles from './app-header.module.css';
 import { BurgerIcon, ListIcon, Logo, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { NavigationLink } from './navigation-link';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { routes } from '../../utils/constants';
 
 const AppHeader = () => {
@@ -21,7 +21,9 @@ const AppHeader = () => {
           )}
         </NavLink>
       </div>
-      <Logo />
+      <Link to={routes.HOME}>
+        <Logo />
+      </Link>
       <div className={styles.rightActions}>
         <NavLink to={routes.PROFILE}>
           {({ isActive }) => (
