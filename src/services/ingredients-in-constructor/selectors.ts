@@ -1,3 +1,3 @@
-// TODO: доработать типизацию на 5 спринте!!!
-//@ts-ignore
-export const getIngredientsInConstructorSelector = (store) => store.ingredientsInConstructor;
+import { RootState } from '..';
+
+export const getIngredientsInConstructorSelector = (store: RootState) => store.ingredientsInConstructor;

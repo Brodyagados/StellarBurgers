@@ -6,8 +6,6 @@ import OrderDetails from '../order-details/order-details';
 import { useDispatch, useSelector } from 'react-redux';
 import { submitOrder } from '../../../../services/order-detail/actions';
 import { getIngredientsInConstructorSelector } from '../../../../services/ingredients-in-constructor/selectors';
-import { TIngredientsInConstructorState } from '../../../../services/ingredients-in-constructor/reducer';
-import { TOrderDetailState } from '../../../../services/order-detail/reducer';
 import { clearIngredientsInConstructor } from '../../../../services/ingredients-in-constructor/actions';
 import { getOrderDetailSelector } from '../../../../services/order-detail/selectors';
 import { useNavigate } from 'react-router-dom';
@@ -23,10 +21,8 @@ const Total = ({ value }: TTotalProps) => {
   const user = useSelector(getUserSelector);
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const { bun, ingredients } = useSelector<TIngredientsInConstructorState, TIngredientsInConstructorState>(
-    getIngredientsInConstructorSelector
-  );
-  const { error } = useSelector<TOrderDetailState, TOrderDetailState>(getOrderDetailSelector);
+  const { bun, ingredients } = useSelector(getIngredientsInConstructorSelector);
+  const { error } = useSelector(getOrderDetailSelector);
 
   const handleShowClick = () => {
     if (!user) {

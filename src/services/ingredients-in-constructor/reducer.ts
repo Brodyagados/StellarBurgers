@@ -11,12 +11,12 @@ type TAction = TAddBunAction | TAddIngredientAction | TRemoveAction | TSetIngred
 
 type TAddBunAction = {
   type: typeof ADD_BUN_IN_CONSTRUCTOR;
-  payload: IngredientModel;
+  payload: ConstructorIngredientModel;
 };
 
 type TAddIngredientAction = {
   type: typeof ADD_INGREDIENT_IN_CONSTRUCTOR;
-  payload: IngredientModel;
+  payload: ConstructorIngredientModel;
 };
 
 type TRemoveAction = {
@@ -34,7 +34,7 @@ type TClearAction = {
 };
 
 export type TIngredientsInConstructorState = {
-  bun: IngredientModel | null;
+  bun: ConstructorIngredientModel | null;
   ingredients: ConstructorIngredientModel[];
 };
 

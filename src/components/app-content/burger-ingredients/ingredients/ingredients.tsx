@@ -5,7 +5,6 @@ import { Group } from './group';
 import { IngredientModel } from '../../../../models';
 import { useSelector } from 'react-redux';
 import { getIngredientsSelector } from '../../../../services/ingredients-list/selectors';
-import { TIngredientsListState } from '../../../../services/ingredients-list/reducer';
 
 type IngredientsByTypeModel = Record<string, IngredientModel[]>;
 
@@ -17,7 +16,7 @@ type TIngreientsProps = {
 };
 
 const Ingredients = ({ bunRef, sauceRef, mainRef, onScroll }: TIngreientsProps) => {
-  const { ingredients, isLoading, error } = useSelector<TIngredientsListState, TIngredientsListState>(getIngredientsSelector);
+  const { ingredients, isLoading, error } = useSelector(getIngredientsSelector);
 
   const ingredientsByType = useMemo(
     () =>

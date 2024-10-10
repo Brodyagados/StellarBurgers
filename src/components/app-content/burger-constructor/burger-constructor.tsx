@@ -3,7 +3,6 @@ import { useCallback, useMemo } from 'react';
 import { DraggableConstructorElement } from './draggable-constructor-element';
 import { Total } from './total';
 import { useDispatch, useSelector } from 'react-redux';
-import { TIngredientsInConstructorState } from '../../../services/ingredients-in-constructor/reducer';
 import { getIngredientsInConstructorSelector } from '../../../services/ingredients-in-constructor/selectors';
 import { IngredientsContainer } from './ingredients-container';
 import { useDrop } from 'react-dnd';
@@ -13,9 +12,7 @@ import { addIngredientCount } from '../../../services/ingredients-list/actions';
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
-  const { bun, ingredients } = useSelector<TIngredientsInConstructorState, TIngredientsInConstructorState>(
-    getIngredientsInConstructorSelector
-  );
+  const { bun, ingredients } = useSelector(getIngredientsInConstructorSelector);
 
   const handleOnDropBun = useCallback(
     (item: IngredientModel) => {
