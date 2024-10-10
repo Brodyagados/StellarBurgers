@@ -11,11 +11,11 @@ export const getIngredientsList = () => async (dispatch: Dispatch<UnknownAction>
   dispatch({ type: GET_INGREDIENTS_LIST_REQUEST });
 
   try {
+    const data = await apiClient.request<TIngredientsListModel>('/ingredients');
     return dispatch({
       type: GET_INGREDIENTS_LIST_SUCCESS,
       payload: data.data.map((item) => ({ ...item, count: 0 }))
     });
-    const data = await apiClient.request<TIngredientsListModel>('/ingredients');
   } catch (e) {
     return dispatch({
       type: GET_INGREDIENTS_LIST_ERROR,
