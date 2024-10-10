@@ -14,11 +14,11 @@ import { useNavigate } from 'react-router-dom';
 import { getUserSelector } from '../../../../services/user/selectors';
 import { routes } from '../../../../utils/constants';
 
-type TotalProps = {
+type TTotalProps = {
   value: number;
 };
 
-const Total = ({ value }: TotalProps) => {
+const Total = ({ value }: TTotalProps) => {
   const navigate = useNavigate();
   const user = useSelector(getUserSelector);
   const [showDetail, setShowDetail] = useState<boolean>(false);

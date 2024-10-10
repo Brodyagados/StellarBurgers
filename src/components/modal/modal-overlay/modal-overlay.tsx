@@ -1,9 +1,9 @@
 import styles from './modal-overlay.module.css';
 
-type ModalOverlayProps = {
+type TModalOverlayProps = {
   onClick: () => void;
 };
 
-const ModalOverlay = ({ onClick }: ModalOverlayProps) => <div className={styles.container} onClick={onClick}></div>;
+const ModalOverlay = ({ onClick }: TModalOverlayProps) => <div className={styles.container} onClick={onClick}></div>;
 
 export default ModalOverlay;

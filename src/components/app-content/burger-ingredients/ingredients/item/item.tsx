@@ -4,11 +4,11 @@ import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-c
 import { useDrag } from 'react-dnd';
 import { Link, useLocation } from 'react-router-dom';
 
-type ItemProps = {
+type TItemProps = {
   data: IngredientModel;
 };
 
-const Item = ({ data }: ItemProps) => {
+const Item = ({ data }: TItemProps) => {
   const location = useLocation();
   const [, dragBunRef] = useDrag({
     type: 'bun',

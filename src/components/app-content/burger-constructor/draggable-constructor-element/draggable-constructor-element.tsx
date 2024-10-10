@@ -10,7 +10,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { useCallback, useRef } from 'react';
 import { getIngredientsInConstructorSelector } from '../../../../services/ingredients-in-constructor/selectors';
 
-type DraggableConstructorElementProps = {
+type TDraggableConstructorElementProps = {
   id: string;
   uniqueId?: string;
   text: string;
@@ -30,7 +30,7 @@ const DraggableConstructorElement = ({
   type,
   index,
   isLocked = false
-}: DraggableConstructorElementProps) => {
+}: TDraggableConstructorElementProps) => {
   const dispatch = useDispatch();
   const { ingredients } = useSelector(getIngredientsInConstructorSelector);
 
