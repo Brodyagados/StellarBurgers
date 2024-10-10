@@ -1,5 +1,5 @@
 import { Button, EmailInput, Input, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styles from './profile-page.module.css';
 import { AccountApi } from '../../api';
 import { useSelector } from 'react-redux';
@@ -33,7 +33,7 @@ const ProfilePage = () => {
   };
 
   const handleSaveChanges = useCallback(
-    async (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       const { success } = await AccountApi.edit({ name: name!, email: email!, password });
