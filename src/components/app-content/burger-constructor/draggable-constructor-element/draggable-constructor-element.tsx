@@ -10,7 +10,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { useCallback, useRef } from 'react';
 import { getIngredientsInConstructorSelector } from '../../../../services/ingredients-in-constructor/selectors';
 
-type DraggableConstructorElementProps = {
+type TDraggableConstructorElementProps = {
   id: string;
   uniqueId?: string;
   text: string;
@@ -30,7 +30,7 @@ const DraggableConstructorElement = ({
   type,
   index,
   isLocked = false
-}: DraggableConstructorElementProps) => {
+}: TDraggableConstructorElementProps) => {
   const dispatch = useDispatch();
   const { ingredients } = useSelector(getIngredientsInConstructorSelector);
 
@@ -58,9 +58,7 @@ const DraggableConstructorElement = ({
 
   const [, dropRef] = useDrop({
     accept: 'draggableIngredient',
-    hover: (item: number, monitor) => {
-      // TODO: доработать типизацию на 5 спринте!!!
-      //@ts-ignore
+    hover: (item: { index: number }, monitor) => {
       const dragIndex = item.index;
       const hoverIndex = index!;
 
@@ -83,8 +81,6 @@ const DraggableConstructorElement = ({
 
       moveIngredient(dragIndex, hoverIndex);
 
-      // TODO: доработать типизацию на 5 спринте!!!
-      //@ts-ignore
       item.index = hoverIndex;
     }
   });

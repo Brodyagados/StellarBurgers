@@ -1,7 +1,6 @@
-// TODO: доработать типизацию на 5 спринте!!!
-//@ts-ignore
-export const getIngredientsSelector = (store) => store.ingredientsList;
+import { RootState } from '..';
 
-// TODO: доработать типизацию на 5 спринте!!!
-//@ts-ignore
-export const getIngredientByIdSelector = (store, id) => store.ingredientsList.ingredients.find(({ _id }) => _id === id);
+export const getIngredientsSelector = (store: RootState) => store.ingredientsList;
+
+export const getIngredientByIdSelector = (store: RootState, id: string) =>
+  store.ingredientsList.ingredients.find(({ _id }) => _id === id);

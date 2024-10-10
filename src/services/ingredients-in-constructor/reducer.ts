@@ -1,4 +1,4 @@
-import { ConstructorIngredientModel, IngredientModel } from '../../models';
+import { TConstructorIngredientModel } from '../../models';
 import {
   REMOVE_INGREDIENT_FROM_CONSTRUCTOR,
   ADD_BUN_IN_CONSTRUCTOR,
@@ -11,12 +11,12 @@ type TAction = TAddBunAction | TAddIngredientAction | TRemoveAction | TSetIngred
 
 type TAddBunAction = {
   type: typeof ADD_BUN_IN_CONSTRUCTOR;
-  payload: IngredientModel;
+  payload: TConstructorIngredientModel;
 };
 
 type TAddIngredientAction = {
   type: typeof ADD_INGREDIENT_IN_CONSTRUCTOR;
-  payload: IngredientModel;
+  payload: TConstructorIngredientModel;
 };
 
 type TRemoveAction = {
@@ -26,7 +26,7 @@ type TRemoveAction = {
 
 type TSetIngredientsAction = {
   type: typeof SET_INGREDIENTS_IN_CONSTRUCTOR;
-  payload: ConstructorIngredientModel[];
+  payload: TConstructorIngredientModel[];
 };
 
 type TClearAction = {
@@ -34,8 +34,8 @@ type TClearAction = {
 };
 
 export type TIngredientsInConstructorState = {
-  bun: IngredientModel | null;
-  ingredients: ConstructorIngredientModel[];
+  bun: TConstructorIngredientModel | null;
+  ingredients: TConstructorIngredientModel[];
 };
 
 const initialState: TIngredientsInConstructorState = {

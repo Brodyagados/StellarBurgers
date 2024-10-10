@@ -1,8 +1,8 @@
-export type OrderNumberModel = {
+export type TOrderNumberModel = {
   number: number;
 };
 
-export type OrderDetailModel = {
+export type TOrderDetailModel = {
   name: string;
-  order: OrderNumberModel;
+  order: TOrderNumberModel;
 };

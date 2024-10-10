@@ -8,7 +8,7 @@ export const USER_ERROR = 'USER/ERROR';
 export const SET_USER_AUTH_CHECKED = 'USER/SET_AUTH_CHECKED';
 export const SET_USER = 'USER/SET';
 
-const request = () => ({ type: USER_REQUEST });
+export const request = () => ({ type: USER_REQUEST });
 
 const setSuccess = () => ({ type: USER_SUCCESS });
 
@@ -17,7 +17,7 @@ const setError = (errorMessage: string | null) => ({
   payload: errorMessage ?? 'Неизвестная ошибка'
 });
 
-export const signIn = (userData: TSignUpDto) => async (dispatch: Dispatch<UnknownAction>) => {
+export const signIn = (userData: TSignUpDto) => async (dispatch: Dispatch) => {
   dispatch(request());
 
   try {

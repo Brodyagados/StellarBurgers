@@ -3,22 +3,19 @@ import { useCallback, useMemo } from 'react';
 import { DraggableConstructorElement } from './draggable-constructor-element';
 import { Total } from './total';
 import { useDispatch, useSelector } from 'react-redux';
-import { TIngredientsInConstructorState } from '../../../services/ingredients-in-constructor/reducer';
 import { getIngredientsInConstructorSelector } from '../../../services/ingredients-in-constructor/selectors';
 import { IngredientsContainer } from './ingredients-container';
 import { useDrop } from 'react-dnd';
 import { addBunInConstructor, addIngredientInConstructor } from '../../../services/ingredients-in-constructor/actions';
-import { IngredientModel } from '../../../models';
+import { TIngredientModel } from '../../../models';
 import { addIngredientCount } from '../../../services/ingredients-list/actions';
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
-  const { bun, ingredients } = useSelector<TIngredientsInConstructorState, TIngredientsInConstructorState>(
-    getIngredientsInConstructorSelector
-  );
+  const { bun, ingredients } = useSelector(getIngredientsInConstructorSelector);
 
   const handleOnDropBun = useCallback(
-    (item: IngredientModel) => {
+    (item: TIngredientModel) => {
       dispatch(addBunInConstructor(item));
       if (bun) {
         dispatch(addIngredientCount(bun._id, -2));
@@ -28,7 +25,7 @@ const BurgerConstructor = () => {
     [bun]
   );
 
-  const handleOnDropIngredient = useCallback((item: IngredientModel) => {
+  const handleOnDropIngredient = useCallback((item: TIngredientModel) => {
     dispatch(addIngredientInConstructor(item));
     dispatch(addIngredientCount(item._id, 1));
   }, []);

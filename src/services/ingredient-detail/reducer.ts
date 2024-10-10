@@ -1,11 +1,11 @@
-import { IngredientModel } from '../../models';
+import { TIngredientModel } from '../../models';
 import { REMOVE_INGREDIENT_DETAIL, SET_INGREDIENT_DETAIL } from './actions';
 
 type TAction = TSetAction | TRemoveAction;
 
 type TSetAction = {
   type: typeof SET_INGREDIENT_DETAIL;
-  payload: IngredientModel;
+  payload: TIngredientModel;
 };
 
 type TRemoveAction = {
@@ -13,7 +13,7 @@ type TRemoveAction = {
 };
 
 type TIngredientDetailState = {
-  ingredient: IngredientModel | null;
+  ingredient: TIngredientModel | null;
 };
 
 const initialState: TIngredientDetailState = {

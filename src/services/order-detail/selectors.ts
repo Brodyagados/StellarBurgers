@@ -1,3 +1,3 @@
-// TODO: доработать типизацию на 5 спринте!!!
-//@ts-ignore
-export const getOrderDetailSelector = (store) => store.orderDetail;
+import { RootState } from '..';
+
+export const getOrderDetailSelector = (store: RootState) => store.orderDetail;
