@@ -1,22 +1,31 @@
 import styles from './ingredient-details.module.css';
-import { IngredientModel } from '../../../../models';
 import { Macronutrient } from './macronutrient';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getIngredientByIdSelector } from '../../../../services/ingredients-list/selectors';
 
-type IngredientDetailsProps = {
-  data: IngredientModel;
-};
+const IngredientDetails = () => {
+  const { id } = useParams();
+  const data = useSelector((store) => getIngredientByIdSelector(store, id));
 
-const IngredientDetails = ({ data }: IngredientDetailsProps) => (
-  <div className={styles.container}>
-    <img src={data.image_large} alt={`${data.name}.`} />
-    <span className='text text_type_main-medium mt-4'>{data.name}</span>
-    <div className={`${styles.macronutrients} mt-8`}>
-      <Macronutrient name='Калории, ккал' value={data.proteins} />
-      <Macronutrient name='Белки, г' value={data.fat} />
-      <Macronutrient name='Жиры, г' value={data.carbohydrates} />
-      <Macronutrient name='Углеводы, г' value={data.calories} />
+  return (
+    <div className={styles.container}>
+      {data ? (
+        <>
+          <img src={data.image_large} alt={`${data.name}.`} />
+          <span className='text text_type_main-medium mt-4'>{data.name}</span>
+          <div className={`${styles.macronutrients} mt-8`}>
+            <Macronutrient name='Калории, ккал' value={data.proteins} />
+            <Macronutrient name='Белки, г' value={data.fat} />
+            <Macronutrient name='Жиры, г' value={data.carbohydrates} />
+            <Macronutrient name='Углеводы, г' value={data.calories} />
+          </div>
+        </>
+      ) : (
+        <span className='text text_type_main-medium mt-4'>Загрузка данных...</span>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 export default IngredientDetails;

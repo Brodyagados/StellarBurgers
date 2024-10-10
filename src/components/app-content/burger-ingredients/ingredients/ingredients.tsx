@@ -3,13 +3,9 @@ import { useMemo } from 'react';
 import { getIngredientTypeDataList, ingredientType } from '../../../../utils/constants';
 import { Group } from './group';
 import { IngredientModel } from '../../../../models';
-import { Modal } from '../../../modal';
-import { IngredientDetails } from '../ingredient-details';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getIngredientsSelector } from '../../../../services/ingredients-list/selectors';
 import { TIngredientsListState } from '../../../../services/ingredients-list/reducer';
-import { removeIngredientDetail } from '../../../../services/ingredient-detail/actions';
-import { getIngredientDetailSelector } from '../../../../services/ingredient-detail/selectors';
 
 type IngredientsByTypeModel = Record<string, IngredientModel[]>;
 
@@ -22,13 +18,6 @@ type TIngreientsProps = {
 
 const Ingredients = ({ bunRef, sauceRef, mainRef, onScroll }: TIngreientsProps) => {
   const { ingredients, isLoading, error } = useSelector<TIngredientsListState, TIngredientsListState>(getIngredientsSelector);
-
-  const ingredientDetail = useSelector(getIngredientDetailSelector);
-  const dispatch = useDispatch();
-
-  const handleDetailCloseClick = () => {
-    dispatch(removeIngredientDetail());
-  };
 
   const ingredientsByType = useMemo(
     () =>
@@ -63,11 +52,6 @@ const Ingredients = ({ bunRef, sauceRef, mainRef, onScroll }: TIngreientsProps) 
           </li>
         ))}
       </ul>
-      {ingredientDetail && (
-        <Modal title='Детали ингредиента' onCloseClick={handleDetailCloseClick}>
-          <IngredientDetails data={ingredientDetail} />
-        </Modal>
-      )}
     </>
   );
 };

@@ -1,3 +1,5 @@
+import { AccountApi } from '../api';
+
 const BASE_URL = 'https://norma.nomoreparties.space/api';
 
 class ApiClient {
@@ -9,11 +11,37 @@ class ApiClient {
       },
       ...options
     });
+
     if (!response.ok) {
-      throw new Error(response.statusText);
+      return response.json().then((error) => Promise.reject(error));
     }
-    const data = await (response.json() as Promise<T>);
-    return data;
+
+    return response.json() as Promise<T>;
+  };
+
+  requestWithRefresh = async <T>(url: string, options?: RequestInit): Promise<T> => {
+    try {
+      return this.request<T>(url, {
+        ...options,
+        headers: {
+          ...options?.headers,
+          authorization: localStorage.getItem('accessToken')!
+        }
+      });
+    } catch (e) {
+      if ((e as Error).message === 'jwt expired') {
+        const refreshData = await AccountApi.refreshToken();
+        return this.request<T>(url, {
+          ...options,
+          headers: {
+            ...options?.headers,
+            authorization: refreshData.accessToken!
+          }
+        });
+      } else {
+        return Promise.reject(e);
+      }
+    }
   };
 }
 

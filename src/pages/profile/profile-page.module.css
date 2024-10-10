@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions {
+  align-self: flex-end;
+}
