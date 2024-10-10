@@ -1,4 +1,4 @@
-import { ConstructorIngredientModel, IngredientModel } from '../../models';
+import { ConstructorIngredientModel } from '../../models';
 import {
   REMOVE_INGREDIENT_FROM_CONSTRUCTOR,
   ADD_BUN_IN_CONSTRUCTOR,
