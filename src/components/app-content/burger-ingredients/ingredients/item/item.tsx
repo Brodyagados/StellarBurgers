@@ -1,11 +1,11 @@
-import { IngredientModel } from '../../../../../models';
+import { TIngredientModel } from '../../../../../models';
 import styles from './item.module.css';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDrag } from 'react-dnd';
 import { Link, useLocation } from 'react-router-dom';
 
 type TItemProps = {
-  data: IngredientModel;
+  data: TIngredientModel;
 };
 
 const Item = ({ data }: TItemProps) => {

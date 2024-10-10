@@ -2,11 +2,11 @@ import styles from './ingredients.module.css';
 import { useMemo } from 'react';
 import { getIngredientTypeDataList, ingredientType } from '../../../../utils/constants';
 import { Group } from './group';
-import { IngredientModel } from '../../../../models';
+import { TIngredientModel } from '../../../../models';
 import { useSelector } from 'react-redux';
 import { getIngredientsSelector } from '../../../../services/ingredients-list/selectors';
 
-type IngredientsByTypeModel = Record<string, IngredientModel[]>;
+type IngredientsByTypeModel = Record<string, TIngredientModel[]>;
 
 type TIngreientsProps = {
   bunRef: React.LegacyRef<HTMLLIElement>;

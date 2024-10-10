@@ -1,10 +1,10 @@
 import styles from './group.module.css';
 import { Item } from '../item';
-import { IngredientModel } from '../../../../../models';
+import { TIngredientModel } from '../../../../../models';
 
 type TGroupProps = {
   text: string;
-  items: IngredientModel[];
+  items: TIngredientModel[];
 };
 
 const Group = ({ text, items }: TGroupProps) => (

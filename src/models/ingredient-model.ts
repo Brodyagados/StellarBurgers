@@ -1,8 +1,8 @@
-export type IngredientsListModel = {
-  data: IngredientModel[];
+export type TIngredientsListModel = {
+  data: TIngredientModel[];
 };
 
-export type IngredientModel = {
+export type TIngredientModel = {
   _id: string;
   name: string;
   type: string;
@@ -16,4 +16,4 @@ export type IngredientModel = {
   count: number;
 };
 
-export type ConstructorIngredientModel = IngredientModel & { uniqueId: string };
+export type TConstructorIngredientModel = TIngredientModel & { uniqueId: string };
