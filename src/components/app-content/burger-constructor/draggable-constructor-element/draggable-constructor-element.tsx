@@ -58,9 +58,7 @@ const DraggableConstructorElement = ({
 
   const [, dropRef] = useDrop({
     accept: 'draggableIngredient',
-    hover: (item: number, monitor) => {
-      // TODO: доработать типизацию на 5 спринте!!!
-      //@ts-ignore
+    hover: (item: { index: number }, monitor) => {
       const dragIndex = item.index;
       const hoverIndex = index!;
 
@@ -83,8 +81,6 @@ const DraggableConstructorElement = ({
 
       moveIngredient(dragIndex, hoverIndex);
 
-      // TODO: доработать типизацию на 5 спринте!!!
-      //@ts-ignore
       item.index = hoverIndex;
     }
   });
