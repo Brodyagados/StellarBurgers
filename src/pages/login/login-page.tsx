@@ -1,5 +1,5 @@
 import { Button, EmailInput, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './login-page.module.css';
 import { routes } from '../../utils/constants';
@@ -16,7 +16,7 @@ const LoginPage = () => {
   const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
   const handleSubmit = useCallback(
-    async (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       // TODO: доработать типизацию на 5 спринте!!!
       //@ts-ignore

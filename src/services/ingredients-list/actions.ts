@@ -1,5 +1,5 @@
 import { Dispatch, UnknownAction } from 'redux';
-import { IngredientsListModel } from '../../models';
+import { TIngredientsListModel } from '../../models';
 import apiClient from '../../utils/api-client';
 
 export const GET_INGREDIENTS_LIST_REQUEST = 'INGREDIENT_LIST/GET_INGREDIENTS_LIST_REQUEST';
@@ -11,7 +11,7 @@ export const getIngredientsList = () => async (dispatch: Dispatch<UnknownAction>
   dispatch({ type: GET_INGREDIENTS_LIST_REQUEST });
 
   try {
-    const data = await apiClient.request<IngredientsListModel>('/ingredients');
+    const data = await apiClient.request<TIngredientsListModel>('/ingredients');
     return dispatch({
       type: GET_INGREDIENTS_LIST_SUCCESS,
       payload: data.data.map((item) => ({ ...item, count: 0 }))

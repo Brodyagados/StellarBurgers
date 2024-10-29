@@ -3,10 +3,11 @@ import { Macronutrient } from './macronutrient';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getIngredientByIdSelector } from '../../../../services/ingredients-list/selectors';
+import { RootState } from '../../../../services';
 
 const IngredientDetails = () => {
   const { id } = useParams();
-  const data = useSelector((store) => getIngredientByIdSelector(store, id));
+  const data = useSelector((store: RootState) => getIngredientByIdSelector(store, id!));
 
   return (
     <div className={styles.container}>

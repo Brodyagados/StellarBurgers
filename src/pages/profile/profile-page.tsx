@@ -1,5 +1,5 @@
 import { Button, EmailInput, Input, PasswordInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styles from './profile-page.module.css';
 import { AccountApi } from '../../api';
 import { useSelector } from 'react-redux';
@@ -8,9 +8,9 @@ import { getUserSelector } from '../../services/user/selectors';
 const ProfilePage = () => {
   const initialState = useSelector(getUserSelector);
   const [actionsVisible, setActionsVisible] = useState(false);
-  const [name, setName] = useState(initialState.name);
-  const [email, setEmail] = useState(initialState.email);
-  const [password, setPassword] = useState(initialState.password);
+  const [name, setName] = useState(initialState?.name);
+  const [email, setEmail] = useState(initialState?.email);
+  const [password, setPassword] = useState('');
 
   const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setActionsVisible(true);
@@ -26,17 +26,17 @@ const ProfilePage = () => {
   };
 
   const handleResetClick = () => {
-    setName(initialState.name);
-    setEmail(initialState.email);
-    setPassword(initialState.password);
+    setName(initialState?.name);
+    setEmail(initialState?.email);
+    setPassword('');
     setActionsVisible(false);
   };
 
   const handleSaveChanges = useCallback(
-    async (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      const { success } = await AccountApi.edit({ name, email, password });
+      const { success } = await AccountApi.edit({ name: name!, email: email!, password });
 
       if (success) {
         setActionsVisible(false);

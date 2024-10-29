@@ -1,4 +1,4 @@
-import { IngredientModel } from '../../models';
+import { TIngredientModel } from '../../models';
 import {
   ADD_INGREDIENT_COUNT,
   GET_INGREDIENTS_LIST_ERROR,
@@ -14,7 +14,7 @@ type TLoadingAction = {
 
 type TSuccessAction = {
   type: typeof GET_INGREDIENTS_LIST_SUCCESS;
-  payload: IngredientModel[];
+  payload: TIngredientModel[];
 };
 
 type TErrorAction = {
@@ -31,7 +31,7 @@ type TAddAction = {
 };
 
 export type TIngredientsListState = {
-  ingredients: IngredientModel[];
+  ingredients: TIngredientModel[];
   isLoading: boolean;
   error: string | null;
 };

@@ -4,14 +4,14 @@ import { ModalOverlay } from './modal-overlay';
 import { ModalContent } from './modal-content';
 import { useEffect } from 'react';
 
-type ModalProps = {
+type TModalProps = {
   title?: string;
   onCloseClick: () => void;
 };
 
 const modalRoot = document.getElementById('modals')!;
 
-const Modal = ({ children, title, onCloseClick }: React.PropsWithChildren<ModalProps>) => {
+const Modal = ({ children, title, onCloseClick }: React.PropsWithChildren<TModalProps>) => {
   const closeDetailByEscKey = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       e.preventDefault();

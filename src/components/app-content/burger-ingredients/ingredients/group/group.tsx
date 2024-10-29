@@ -1,13 +1,13 @@
 import styles from './group.module.css';
 import { Item } from '../item';
-import { IngredientModel } from '../../../../../models';
+import { TIngredientModel } from '../../../../../models';
 
-type GroupProps = {
+type TGroupProps = {
   text: string;
-  items: IngredientModel[];
+  items: TIngredientModel[];
 };
 
-const Group = ({ text, items }: GroupProps) => (
+const Group = ({ text, items }: TGroupProps) => (
   <>
     <span className='text text_type_main-medium'>{text}</span>
     <ul className={`${styles.items} px-4 pt-6 pb-10`}>

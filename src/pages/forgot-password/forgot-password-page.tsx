@@ -1,5 +1,5 @@
 import { Button, EmailInput } from '@ya.praktikum/react-developer-burger-ui-components';
-import { ChangeEvent, SyntheticEvent, useCallback, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './forgot-password-page.module.css';
 import { routes } from '../../utils/constants';
@@ -12,7 +12,7 @@ const ForgotPasswordPage = () => {
   const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
 
   const handleSubmit = useCallback(
-    async (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
       const { success } = await AccountApi.sendTokenForResetPassword({ email });

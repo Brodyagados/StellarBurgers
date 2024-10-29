@@ -1,7 +1,8 @@
-// TODO: доработать типизацию на 5 спринте!!!
-//@ts-ignore
-export const getUserSelector = (store) => store.user.data;
+import { RootState } from '..';
 
-// TODO: доработать типизацию на 5 спринте!!!
-//@ts-ignore
-export const getUserAuthCheckedSelector = (store) => ({ user: store.user.data, isAuthChecked: store.user.isAuthChecked });
+export const getUserSelector = (store: RootState) => store.user.data;
+
+export const getUserAuthCheckedSelector = (store: RootState) => ({
+  user: store.user.data,
+  isAuthChecked: store.user.isAuthChecked
+});

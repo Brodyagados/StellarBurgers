@@ -2,12 +2,11 @@ import styles from './ingredients.module.css';
 import { useMemo } from 'react';
 import { getIngredientTypeDataList, ingredientType } from '../../../../utils/constants';
 import { Group } from './group';
-import { IngredientModel } from '../../../../models';
+import { TIngredientModel } from '../../../../models';
 import { useSelector } from 'react-redux';
 import { getIngredientsSelector } from '../../../../services/ingredients-list/selectors';
-import { TIngredientsListState } from '../../../../services/ingredients-list/reducer';
 
-type IngredientsByTypeModel = Record<string, IngredientModel[]>;
+type IngredientsByTypeModel = Record<string, TIngredientModel[]>;
 
 type TIngreientsProps = {
   bunRef: React.LegacyRef<HTMLLIElement>;
@@ -17,7 +16,7 @@ type TIngreientsProps = {
 };
 
 const Ingredients = ({ bunRef, sauceRef, mainRef, onScroll }: TIngreientsProps) => {
-  const { ingredients, isLoading, error } = useSelector<TIngredientsListState, TIngredientsListState>(getIngredientsSelector);
+  const { ingredients, isLoading, error } = useSelector(getIngredientsSelector);
 
   const ingredientsByType = useMemo(
     () =>
