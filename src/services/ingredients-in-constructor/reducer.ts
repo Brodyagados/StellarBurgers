@@ -7,7 +7,12 @@ import {
   CLEAR_INGREDIENTS_IN_CONSTRUCTOR
 } from './actions';
 
-type TAction = TAddBunAction | TAddIngredientAction | TRemoveAction | TSetIngredientsAction | TClearAction;
+export type TIngredientsInConstructorActions =
+  | TAddBunAction
+  | TAddIngredientAction
+  | TRemoveAction
+  | TSetIngredientsAction
+  | TClearAction;
 
 type TAddBunAction = {
   type: typeof ADD_BUN_IN_CONSTRUCTOR;
@@ -43,7 +48,7 @@ const initialState: TIngredientsInConstructorState = {
   ingredients: []
 };
 
-export const ingredientsInConstructorReducer = (state = initialState, action: TAction) => {
+export const ingredientsInConstructorReducer = (state = initialState, action: TIngredientsInConstructorActions) => {
   switch (action.type) {
     case ADD_BUN_IN_CONSTRUCTOR: {
       return {

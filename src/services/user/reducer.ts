@@ -1,7 +1,7 @@
 import { TUserModel } from '../../models';
 import { SET_USER, SET_USER_AUTH_CHECKED, USER_ERROR, USER_REQUEST, USER_SUCCESS } from './actions';
 
-type TAction = TLoadingAction | TSuccessAction | TErrorAction | TSetAuthChecked | TSetUser;
+export type TUserActions = TLoadingAction | TSuccessAction | TErrorAction | TSetAuthChecked | TSetUser;
 
 type TLoadingAction = {
   type: typeof USER_REQUEST;
@@ -40,7 +40,7 @@ const initialState: TUserState = {
   isAuthChecked: false
 };
 
-export const userReducer = (state = initialState, action: TAction) => {
+export const userReducer = (state = initialState, action: TUserActions) => {
   switch (action.type) {
     case USER_REQUEST: {
       return {

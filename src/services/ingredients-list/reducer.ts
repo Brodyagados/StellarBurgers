@@ -6,7 +6,7 @@ import {
   GET_INGREDIENTS_LIST_SUCCESS
 } from './actions';
 
-type TAction = TLoadingAction | TSuccessAction | TErrorAction | TAddAction;
+export type TIngredientsListActions = TLoadingAction | TSuccessAction | TErrorAction | TAddAction;
 
 type TLoadingAction = {
   type: typeof GET_INGREDIENTS_LIST_REQUEST;
@@ -42,7 +42,7 @@ const initialState: TIngredientsListState = {
   error: null
 };
 
-export const ingredientsListReducer = (state = initialState, action: TAction) => {
+export const ingredientsListReducer = (state = initialState, action: TIngredientsListActions) => {
   switch (action.type) {
     case GET_INGREDIENTS_LIST_REQUEST: {
       return {

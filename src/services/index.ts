@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import { ingredientsListReducer } from './ingredients-list/reducer';
-import { ingredientsInConstructorReducer } from './ingredients-in-constructor/reducer';
-import { ingredientDetailReducer } from './ingredient-detail/reducer';
-import { orderDetailReducer } from './order-detail/reducer';
-import { userReducer } from './user/reducer';
+import { ingredientsListReducer, TIngredientsListActions } from './ingredients-list/reducer';
+import { ingredientsInConstructorReducer, TIngredientsInConstructorActions } from './ingredients-in-constructor/reducer';
+import { ingredientDetailReducer, TIngredientDetailActions } from './ingredient-detail/reducer';
+import { orderDetailReducer, TOrderDetailActions } from './order-detail/reducer';
+import { TUserActions, userReducer } from './user/reducer';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 export const rootReducer = combineReducers({
   ingredientsList: ingredientsListReducer,
@@ -13,4 +14,12 @@ export const rootReducer = combineReducers({
   user: userReducer
 });
 
+type TApplicationActions =
+  | TIngredientDetailActions
+  | TIngredientsInConstructorActions
+  | TIngredientsListActions
+  | TOrderDetailActions
+  | TUserActions;
 export type RootState = ReturnType<typeof rootReducer>;
+export type AppDispatch = ThunkDispatch<RootState, unknown, TApplicationActions>;
+export type AppThunkAction<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, TApplicationActions>;

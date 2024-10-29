@@ -1,6 +1,6 @@
 import { SUBMIT_ORDER_REQUEST, SUBMIT_ORDER_SUCCESS, SUBMIT_ORDER_ERROR } from './actions';
 
-type TAction = TLoadingAction | TSuccessAction | TErrorAction;
+export type TOrderDetailActions = TLoadingAction | TSuccessAction | TErrorAction;
 
 type TLoadingAction = {
   type: typeof SUBMIT_ORDER_REQUEST;
@@ -28,7 +28,7 @@ const initialState: TOrderDetailState = {
   error: null
 };
 
-export const orderDetailReducer = (state = initialState, action: TAction) => {
+export const orderDetailReducer = (state = initialState, action: TOrderDetailActions) => {
   switch (action.type) {
     case SUBMIT_ORDER_REQUEST: {
       return {
