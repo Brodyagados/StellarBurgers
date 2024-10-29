@@ -2,11 +2,11 @@ import { Dispatch, UnknownAction } from 'redux';
 import { TLoginDto, TSignUpDto, TUserModel } from '../../models';
 import { AccountApi } from '../../api';
 
-export const USER_REQUEST = 'USER/REQUEST';
-export const USER_SUCCESS = 'USER/SUCCESS';
-export const USER_ERROR = 'USER/ERROR';
-export const SET_USER_AUTH_CHECKED = 'USER/SET_AUTH_CHECKED';
-export const SET_USER = 'USER/SET';
+export const USER_REQUEST: 'USER/REQUEST' = 'USER/REQUEST';
+export const USER_SUCCESS: 'USER/SUCCESS' = 'USER/SUCCESS';
+export const USER_ERROR: 'USER/ERROR' = 'USER/ERROR';
+export const SET_USER_AUTH_CHECKED: 'USER/SET_AUTH_CHECKED' = 'USER/SET_AUTH_CHECKED';
+export const SET_USER: 'USER/SET' = 'USER/SET';
 
 export const request = () => ({ type: USER_REQUEST });
 
