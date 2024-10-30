@@ -23,5 +23,8 @@
   gap: 16px;
 }
 
+.list,
 .table {
+  height: 72dvh;
+  overflow: auto;
 }

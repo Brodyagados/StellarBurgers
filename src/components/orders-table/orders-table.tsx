@@ -20,7 +20,7 @@ const OrdersTable = ({ data: { orders, total, totalToday } }: TOrdersTableProps)
   );
 
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.orders}>
         <div>
           <p className='text text_type_main-medium'>Готовы:</p>

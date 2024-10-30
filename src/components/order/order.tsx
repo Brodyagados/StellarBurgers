@@ -40,7 +40,7 @@ const Order = ({ data: { number, createdAt, name, ingredients, status }, hasStat
       </div>
       <p className='pt-6 text text_type_main-medium'>{name}</p>
       {hasStatus && (
-        <p className='pt-6 text text_type_main-small' style={{ color: statusMetadata.color }}>
+        <p className='pt-2 text text_type_main-small' style={{ color: statusMetadata.color }}>
           {statusMetadata.description}
         </p>
       )}
