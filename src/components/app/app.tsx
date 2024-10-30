@@ -40,7 +40,8 @@ function App() {
             <Route path={routes.PROFILE_ORDERS} element='' /> {/* TODO: обернуть в ProtectedRoute после реализации страницы */}
           </Route>
           <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
-          <Route path={routes.ORDERS} element='' />
+          <Route path={routes.FEED} element='' />
+          <Route path={routes.FEED_ORDER} element='' />
         </Route>
       </Routes>
 
