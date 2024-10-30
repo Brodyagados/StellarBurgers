@@ -16,3 +16,10 @@ export type TOrderModel = {
   updatedAt: string;
   ingredients: string[];
 };
+
+export type TOrdersListModel = {
+  success: boolean;
+  orders: TOrderModel[];
+  total: number;
+  totalToday: number;
+};

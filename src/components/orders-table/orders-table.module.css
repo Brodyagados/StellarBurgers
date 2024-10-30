@@ -1,0 +1,20 @@
+.container {
+}
+
+.orders {
+  display: flex;
+  gap: 36px;
+}
+
+.table {
+  display: grid;
+  grid-template-rows: repeat(10, max-content);
+  row-gap: 8px;
+  column-gap: 16px;
+  grid-auto-flow: column;
+  margin-top: 24px;
+}
+
+.green {
+  color: #00cccc;
+}
