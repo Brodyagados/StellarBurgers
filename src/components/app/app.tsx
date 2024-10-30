@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { getIngredientsList } from '../../services/ingredients-list/actions';
 import { ForgotPasswordPage, HomePage, LoginPage, ProfilePage, RegisterPage, ResetPasswordPage } from '../../pages';
 import { routes } from '../../utils/constants';
@@ -9,6 +8,7 @@ import { IngredientDetails } from '../app-content/burger-ingredients/ingredient-
 import { Modal } from '../modal';
 import { ProtectedRoute } from '../protected-route';
 import { checkUserAuth } from '../../services/user/actions';
+import { useDispatch } from '../../hooks';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,11 +18,7 @@ function App() {
   const backgroundLocation = location.state && location.state.backgroundLocation;
 
   useEffect(() => {
-    // TODO: доработать типизацию на 5 спринте!!!
-    //@ts-ignore
     dispatch(getIngredientsList());
-    // TODO: доработать типизацию на 5 спринте!!!
-    //@ts-ignore
     dispatch(checkUserAuth());
   }, []);
 

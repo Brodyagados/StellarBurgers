@@ -12,7 +12,7 @@ export const SET_INGREDIENTS_IN_CONSTRUCTOR: 'INGREDIENT_IN_CONSTRUCTOR/SET_INGR
 export const CLEAR_INGREDIENTS_IN_CONSTRUCTOR: 'INGREDIENT_IN_CONSTRUCTOR/CLEAR_INGREDIENTS_IN_CONSTRUCTOR' =
   'INGREDIENT_IN_CONSTRUCTOR/CLEAR_INGREDIENTS_IN_CONSTRUCTOR';
 
-export const addBunInConstructor = (bun: TIngredientModel) => ({
+export const addBunInConstructor = (bun: TConstructorIngredientModel) => ({
   type: ADD_BUN_IN_CONSTRUCTOR,
   payload: bun
 });

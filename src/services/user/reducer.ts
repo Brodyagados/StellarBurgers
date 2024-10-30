@@ -23,7 +23,7 @@ type TSetAuthChecked = {
 
 type TSetUser = {
   type: typeof SET_USER;
-  payload: TUserModel;
+  payload: TUserModel | null;
 };
 
 export type TUserState = {

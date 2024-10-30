@@ -2,8 +2,8 @@ import { Button, EmailInput, Input, PasswordInput } from '@ya.praktikum/react-de
 import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import styles from './profile-page.module.css';
 import { AccountApi } from '../../api';
-import { useSelector } from 'react-redux';
 import { getUserSelector } from '../../services/user/selectors';
+import { useSelector } from '../../hooks';
 
 const ProfilePage = () => {
   const initialState = useSelector(getUserSelector);

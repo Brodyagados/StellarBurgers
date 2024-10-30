@@ -3,8 +3,8 @@ import { useMemo } from 'react';
 import { getIngredientTypeDataList, ingredientType } from '../../../../utils/constants';
 import { Group } from './group';
 import { TIngredientModel } from '../../../../models';
-import { useSelector } from 'react-redux';
 import { getIngredientsSelector } from '../../../../services/ingredients-list/selectors';
+import { useSelector } from '../../../../hooks';
 
 type IngredientsByTypeModel = Record<string, TIngredientModel[]>;
 

@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import { getUserAuthCheckedSelector } from '../../services/user/selectors';
 import { routes } from '../../utils/constants';
+import { useSelector } from '../../hooks';
 
 type TProtectedRouteProps = {
   component: React.ReactNode;

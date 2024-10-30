@@ -1,9 +1,9 @@
 import styles from './ingredient-details.module.css';
 import { Macronutrient } from './macronutrient';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { getIngredientByIdSelector } from '../../../../services/ingredients-list/selectors';
 import { RootState } from '../../../../services';
+import { useSelector } from '../../../../hooks';
 
 const IngredientDetails = () => {
   const { id } = useParams();

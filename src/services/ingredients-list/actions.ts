@@ -1,4 +1,4 @@
-import { Dispatch, UnknownAction } from 'redux';
+import { AppDispatch } from '..';
 import { TIngredientsListModel } from '../../models';
 import apiClient from '../../utils/api-client';
 
@@ -10,7 +10,7 @@ export const GET_INGREDIENTS_LIST_ERROR: 'INGREDIENT_LIST/GET_INGREDIENTS_LIST_E
   'INGREDIENT_LIST/GET_INGREDIENTS_LIST_ERROR';
 export const ADD_INGREDIENT_COUNT: 'INGREDIENT_LIST/ADD_INGREDIENT_COUNT' = 'INGREDIENT_LIST/ADD_INGREDIENT_COUNT';
 
-export const getIngredientsList = () => async (dispatch: Dispatch<UnknownAction>) => {
+export const getIngredientsList = () => async (dispatch: AppDispatch) => {
   dispatch({ type: GET_INGREDIENTS_LIST_REQUEST });
 
   try {

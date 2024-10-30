@@ -1,13 +1,13 @@
-import { Dispatch, UnknownAction } from 'redux';
 import { TOrderDetailModel } from '../../models';
 import apiClient from '../../utils/api-client';
 import { getIngredientsList } from '../ingredients-list/actions';
+import { AppDispatch } from '..';
 
 export const SUBMIT_ORDER_REQUEST: 'ORDER_DETAIL/SUBMIT_ORDER_REQUEST' = 'ORDER_DETAIL/SUBMIT_ORDER_REQUEST';
 export const SUBMIT_ORDER_SUCCESS: 'ORDER_DETAIL/SUBMIT_ORDER_SUCCESS' = 'ORDER_DETAIL/SUBMIT_ORDER_SUCCESS';
 export const SUBMIT_ORDER_ERROR: 'ORDER_DETAIL/SUBMIT_ORDER_ERROR' = 'ORDER_DETAIL/SUBMIT_ORDER_ERROR';
 
-export const submitOrder = (ingredients: string[]) => async (dispatch: Dispatch<UnknownAction>) => {
+export const submitOrder = (ingredients: string[]) => async (dispatch: AppDispatch) => {
   dispatch({ type: SUBMIT_ORDER_REQUEST });
 
   try {
@@ -17,8 +17,6 @@ export const submitOrder = (ingredients: string[]) => async (dispatch: Dispatch<
       payload: data.order.number
     });
 
-    // TODO: доработать типизацию на 5 спринте!!!
-    //@ts-ignore
     dispatch(getIngredientsList());
   } catch (e) {
     return dispatch({
