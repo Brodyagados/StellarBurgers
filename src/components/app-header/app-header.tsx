@@ -15,7 +15,7 @@ const AppHeader = () => {
             <NavigationLink text='Конструктор' icon={<BurgerIcon type={getIconType(isActive)} />} isActive={isActive} />
           )}
         </NavLink>
-        <NavLink to={routes.ORDERS}>
+        <NavLink to={routes.FEED}>
           {({ isActive }) => (
             <NavigationLink text='Лента заказов' icon={<ListIcon type={getIconType(isActive)} />} isActive={isActive} />
           )}

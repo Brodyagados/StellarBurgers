@@ -9,6 +9,7 @@ import { Modal } from '../modal';
 import { ProtectedRoute } from '../protected-route';
 import { checkUserAuth } from '../../services/user/actions';
 import { useDispatch } from '../../hooks';
+import { FeedPage } from '../../pages/feed';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function App() {
             <Route path={routes.PROFILE_ORDERS} element='' /> {/* TODO: обернуть в ProtectedRoute после реализации страницы */}
           </Route>
           <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
-          <Route path={routes.FEED} element='' />
+          <Route path={routes.FEED} element={<FeedPage />} />
           <Route path={routes.FEED_ORDER} element='' />
         </Route>
       </Routes>
