@@ -11,6 +11,7 @@ import { checkUserAuth } from '../../services/user/actions';
 import { useDispatch } from '../../hooks';
 import { FeedPage } from '../../pages/feed';
 import { OrderInformation } from '../order-information';
+import { ProfileOrdersPage } from '../../pages/profile-orders';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,11 +40,12 @@ function App() {
           <Route path={routes.RESET_PASSWORD} element={<ProtectedRoute component={<ResetPasswordPage />} onlyUnAuth />} />
           <Route element={<ProfileLayout />}>
             <Route path={routes.PROFILE} element={<ProtectedRoute component={<ProfilePage />} />} />
-            <Route path={routes.PROFILE_ORDERS} element='' /> {/* TODO: обернуть в ProtectedRoute после реализации страницы */}
+            <Route path={routes.PROFILE_ORDERS} element={<ProtectedRoute component={<ProfileOrdersPage />} />} />
           </Route>
           <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
           <Route path={routes.FEED} element={<FeedPage />} />
           <Route path={routes.FEED_ORDER} element={<OrderInformation />} />
+          <Route path={routes.PROFILE_ORDER} element={<OrderInformation />} />
         </Route>
       </Routes>
 
@@ -59,6 +61,14 @@ function App() {
           />
           <Route
             path={routes.FEED_ORDER}
+            element={
+              <Modal title='' onCloseClick={handleModalCloseClick}>
+                <OrderInformation />
+              </Modal>
+            }
+          />
+          <Route
+            path={routes.PROFILE_ORDER}
             element={
               <Modal title='' onCloseClick={handleModalCloseClick}>
                 <OrderInformation />
