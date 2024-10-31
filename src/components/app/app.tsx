@@ -10,6 +10,7 @@ import { ProtectedRoute } from '../protected-route';
 import { checkUserAuth } from '../../services/user/actions';
 import { useDispatch } from '../../hooks';
 import { FeedPage } from '../../pages/feed';
+import { OrderInformation } from '../order-information';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function App() {
           </Route>
           <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
           <Route path={routes.FEED} element={<FeedPage />} />
-          <Route path={routes.FEED_ORDER} element='' />
+          <Route path={routes.FEED_ORDER} element={<OrderInformation />} />
         </Route>
       </Routes>
 
