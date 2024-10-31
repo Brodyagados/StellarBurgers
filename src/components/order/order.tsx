@@ -46,8 +46,8 @@ const Order = ({ data: { number, createdAt, name, ingredients, status }, hasStat
       )}
       <div className={`mt-6 ${styles.main}`}>
         <div className={styles.ingredients}>
-          {icons.slice(0, MAX_VISIBLE_INGREDIENTS).map((icon, index) => (
-            <div className={styles.ingredient}>
+          {icons.slice(0, MAX_VISIBLE_INGREDIENTS).map((icon, index, arr) => (
+            <div className={styles.ingredient} style={{ zIndex: arr.length - index }}>
               <img key={index} src={icon} className={styles.icon} />
               {MAX_VISIBLE_INGREDIENTS === index + 1 && (
                 <span className={`text text_type_main-small ${styles.unvisibleIngredientsCounter}`}>
