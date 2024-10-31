@@ -57,6 +57,14 @@ function App() {
               </Modal>
             }
           />
+          <Route
+            path={routes.FEED_ORDER}
+            element={
+              <Modal title='' onCloseClick={handleModalCloseClick}>
+                <OrderInformation />
+              </Modal>
+            }
+          />
         </Routes>
       )}
     </>
