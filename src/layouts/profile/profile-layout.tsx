@@ -20,7 +20,7 @@ const ProfileLayout = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.content}>
+      <div className={`mt-30 ${styles.content}`}>
         <div className={styles.left}>
           <div className={styles.links}>
             <ProfileNavigateItem to={routes.PROFILE} text='Профиль' />
@@ -30,7 +30,9 @@ const ProfileLayout = () => {
             </span>
           </div>
         </div>
-        <Outlet />
+        <div className={styles.right}>
+          <Outlet />
+        </div>
       </div>
     </div>
   );
