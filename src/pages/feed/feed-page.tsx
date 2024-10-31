@@ -96,7 +96,7 @@ const FeedPage = () => {
           <div className={styles.list}>
             {ordersList.orders.map((order) => (
               <Link key={order._id} to={`/feed/${order._id}`} state={{ backgroundLocation: location }}>
-                <Order data={order} hasStatus />
+                <Order data={order} />
               </Link>
             ))}
           </div>
