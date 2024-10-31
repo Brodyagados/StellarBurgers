@@ -9,7 +9,7 @@ export type TOrderDetailModel = {
 
 export type TOrderModel = {
   _id: string;
-  status: 'done'; // TODO: Добавить остальные статусы
+  status: 'created' | 'pending' | 'done';
   name: string;
   number: number;
   createdAt: string;

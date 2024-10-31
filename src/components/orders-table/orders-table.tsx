@@ -12,9 +12,8 @@ type TOrdersTableProps = {
 const OrdersTable = ({ data: { orders, total, totalToday } }: TOrdersTableProps) => {
   const [doneOrders, inProgressOrders] = useMemo(
     () => [
-      orders.filter((order) => order.status === orderStatus.Done).slice(0, 2 * MAX_ORDERS_PER_COLUMN),
-      // TODO: переделать под статус "в работе"
-      orders.filter((order) => order.status === orderStatus.Done).slice(0, 2 * MAX_ORDERS_PER_COLUMN)
+      orders.filter((order) => order.status === orderStatus.DONE).slice(0, 2 * MAX_ORDERS_PER_COLUMN),
+      orders.filter((order) => order.status === orderStatus.CREATED).slice(0, 2 * MAX_ORDERS_PER_COLUMN)
     ],
     [orders]
   );

@@ -4,13 +4,22 @@ type OrderStatusMetadata = {
 };
 
 export const orderStatus: Record<string, string> = {
-  Done: 'done'
-  // TODO: Добавить остальные статусы
+  CREATED: 'created',
+  PENDING: 'pending',
+  DONE: 'done'
 };
 
 export const orderStatusMetadata: Record<string, OrderStatusMetadata> = {
-  [orderStatus.Done]: {
+  [orderStatus.CREATED]: {
     color: '#F2F2F3',
+    description: 'Готовится'
+  },
+  [orderStatus.PENDING]: {
+    color: '#E52B1A',
+    description: 'Отменен'
+  },
+  [orderStatus.DONE]: {
+    color: '#00cccc',
     description: 'Выполнен'
   }
 };
