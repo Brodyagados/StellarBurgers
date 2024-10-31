@@ -62,7 +62,7 @@ const OrderInformation = () => {
       <p className='pt-15 text text_type_main-medium'>Состав:</p>
       <div className={`pt-6 ${styles.ingredients}`}>
         {Array.from(uniqueIngredients).map(([_, { ingredient, count }]) => (
-          <div className={styles.ingredient}>
+          <div key={ingredient._id} className={styles.ingredient}>
             <img className={styles.icon} src={ingredient.image} />
             <span className='pl-4 text text_type_main-small'>{ingredient.name}</span>
             <div className={`pl-4 ${styles.total}`}>

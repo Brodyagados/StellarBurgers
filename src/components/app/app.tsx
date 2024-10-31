@@ -24,7 +24,7 @@ function App() {
     dispatch(checkUserAuth());
   }, []);
 
-  const handleIngredientDetailCloseClick = () => {
+  const handleModalCloseClick = () => {
     navigate(-1);
   };
 
@@ -52,7 +52,7 @@ function App() {
           <Route
             path={routes.INGREDIENT}
             element={
-              <Modal title='Детали ингредиента' onCloseClick={handleIngredientDetailCloseClick}>
+              <Modal title='Детали ингредиента' onCloseClick={handleModalCloseClick}>
                 <IngredientDetails />
               </Modal>
             }

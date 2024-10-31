@@ -27,7 +27,9 @@ const OrdersTable = ({ data: { orders, total, totalToday } }: TOrdersTableProps)
           <p className='text text_type_main-medium'>Готовы:</p>
           <div className={`${styles.table} ${styles.green}`}>
             {doneOrders.map((order) => (
-              <p className={`text text_type_digits-default`}>{order.number}</p>
+              <p key={order._id} className={`text text_type_digits-default`}>
+                {order.number}
+              </p>
             ))}
           </div>
         </div>
