@@ -4,6 +4,8 @@ import { TOrdersListModel } from '../../models';
 import { orderStatus } from '../../utils/constants/order-status';
 
 const MAX_ORDERS_PER_COLUMN = 10;
+const MAX_COLUMNS_BY_STATUS = 2;
+const INGREDIENTS_COUNT = MAX_COLUMNS_BY_STATUS * MAX_ORDERS_PER_COLUMN;
 
 type TOrdersTableProps = {
   data: TOrdersListModel;
@@ -12,8 +14,8 @@ type TOrdersTableProps = {
 const OrdersTable = ({ data: { orders, total, totalToday } }: TOrdersTableProps) => {
   const [doneOrders, inProgressOrders] = useMemo(
     () => [
-      orders.filter((order) => order.status === orderStatus.DONE).slice(0, 2 * MAX_ORDERS_PER_COLUMN),
-      orders.filter((order) => order.status === orderStatus.CREATED).slice(0, 2 * MAX_ORDERS_PER_COLUMN)
+      orders.filter((order) => order.status === orderStatus.DONE).slice(0, INGREDIENTS_COUNT),
+      orders.filter((order) => order.status === orderStatus.CREATED).slice(0, INGREDIENTS_COUNT)
     ],
     [orders]
   );
