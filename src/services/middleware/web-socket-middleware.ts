@@ -1,7 +1,7 @@
 import type { Middleware, MiddlewareAPI } from 'redux';
 
 import type { TApplicationActions, AppDispatch, RootState } from '../';
-import { connectError, send, disconnect, getMessage, WEB_SOCKET_CONNECT, WEB_SOCKET_SEND } from './actions';
+import { connectError, disconnect, getMessage, WEB_SOCKET_CONNECT, WEB_SOCKET_SEND } from './actions';
 import { TOrdersListModel } from '../../models';
 
 export const webSocketMiddleware = (): Middleware => {
