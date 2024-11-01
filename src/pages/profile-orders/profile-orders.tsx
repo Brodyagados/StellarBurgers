@@ -89,7 +89,7 @@ const ProfileOrdersPage = () => {
   return (
     <div className={styles.container}>
       {ordersList.orders.map((order) => (
-        <Link key={order._id} to={`/profile/orders/${order._id}`} state={{ backgroundLocation: location }}>
+        <Link key={order._id} to={`/profile/orders/${order.number}`} state={{ backgroundLocation: location }}>
           <Order data={order} hasStatus />
         </Link>
       ))}

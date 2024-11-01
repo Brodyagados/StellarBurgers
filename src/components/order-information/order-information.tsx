@@ -1,6 +1,6 @@
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from '../../hooks';
-import { TIngredientModel, TOrderModel } from '../../models';
+import { TIngredientModel } from '../../models';
 import { getIngredientsByIdsSelector } from '../../services/ingredients-list/selectors';
 import { orderStatusMetadata } from '../../utils/constants';
 import styles from './order-information.module.css';
