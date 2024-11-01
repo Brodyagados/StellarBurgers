@@ -45,7 +45,7 @@ function App() {
           <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
           <Route path={routes.FEED} element={<FeedPage />} />
           <Route path={routes.FEED_ORDER} element={<OrderInformation />} />
-          <Route path={routes.PROFILE_ORDER} element={<OrderInformation />} />
+          <Route path={routes.PROFILE_ORDER} element={<ProtectedRoute component={<OrderInformation />} />} />
         </Route>
       </Routes>
 
