@@ -21,7 +21,9 @@ const OrderInformation = () => {
   const ingredientsInfo = useSelector((store) => getIngredientsByIdsSelector(store, order?.ingredients ?? []));
 
   useEffect(() => {
-    dispatch(getOrderInformation(Number(id)));
+    if (!order) {
+      dispatch(getOrderInformation(Number(id)));
+    }
   }, [id]);
 
   const statusMetadata = orderStatusMetadata[order?.status ?? 'done'];
