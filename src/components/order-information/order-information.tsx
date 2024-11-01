@@ -2,7 +2,7 @@ import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burge
 import { useSelector } from '../../hooks';
 import { TIngredientModel, TOrderModel } from '../../models';
 import { getIngredientsByIdsSelector } from '../../services/ingredients-list/selectors';
-import { orderStatusMetadata } from '../../utils/constants/order-status';
+import { orderStatusMetadata } from '../../utils/constants';
 import styles from './order-information.module.css';
 import { useMemo } from 'react';
 

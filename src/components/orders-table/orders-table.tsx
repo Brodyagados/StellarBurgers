@@ -1,7 +1,7 @@
 import styles from './orders-table.module.css';
 import { useMemo } from 'react';
 import { TOrdersListModel } from '../../models';
-import { orderStatus } from '../../utils/constants/order-status';
+import { orderStatus } from '../../utils/constants';
 
 const MAX_ORDERS_PER_COLUMN = 10;
 const MAX_COLUMNS_BY_STATUS = 2;

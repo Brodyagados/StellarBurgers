@@ -4,7 +4,7 @@ import { useSelector } from '../../hooks';
 import { getIngredientsByIdsSelector } from '../../services/ingredients-list/selectors';
 import { useMemo } from 'react';
 import { TIngredientModel, TOrderModel } from '../../models';
-import { orderStatusMetadata } from '../../utils/constants/order-status';
+import { orderStatusMetadata } from '../../utils/constants';
 
 const MAX_VISIBLE_INGREDIENTS = 6;
 
