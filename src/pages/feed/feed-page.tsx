@@ -29,7 +29,7 @@ const FeedPage = () => {
         <div className={`mt-6 ${styles.content}`}>
           <div className={styles.list}>
             {ordersList?.orders?.map((order) => (
-              <Link key={order._id} to={`/feed/${order._id}`} state={{ backgroundLocation: location }}>
+              <Link key={order._id} to={`/feed/${order.number}`} state={{ backgroundLocation: location }}>
                 <Order data={order} />
               </Link>
             ))}

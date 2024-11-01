@@ -5,7 +5,8 @@ import {
   SUBMIT_ORDER_ERROR,
   GET_ORDER_REQUEST,
   GET_ORDER_SUCCESS,
-  GET_ORDER_ERROR
+  GET_ORDER_ERROR,
+  CLEAR_ORDER
 } from './actions';
 
 export type TOrderDetailActions =
@@ -14,7 +15,8 @@ export type TOrderDetailActions =
   | TErrorAction
   | TGetAction
   | TGetSuccessAction
-  | TGetErrorAction;
+  | TGetErrorAction
+  | TClearAction;
 
 type TLoadingAction = {
   type: typeof SUBMIT_ORDER_REQUEST;
@@ -42,6 +44,10 @@ type TGetSuccessAction = {
 type TGetErrorAction = {
   type: typeof GET_ORDER_ERROR;
   payload: string;
+};
+
+type TClearAction = {
+  type: typeof CLEAR_ORDER;
 };
 
 export type TOrderDetailState = {
@@ -76,6 +82,7 @@ export const orderDetailReducer = (state = initialState, action: TOrderDetailAct
     }
     case SUBMIT_ORDER_ERROR: {
       return {
+        ...state,
         number: null,
         isLoading: false,
         error: action.payload
@@ -97,9 +104,16 @@ export const orderDetailReducer = (state = initialState, action: TOrderDetailAct
     }
     case GET_ORDER_ERROR: {
       return {
+        ...state,
         order: null,
         isLoading: false,
         error: action.payload
+      };
+    }
+    case CLEAR_ORDER: {
+      return {
+        ...state,
+        order: null
       };
     }
     default: {

@@ -10,6 +10,7 @@ export const SUBMIT_ORDER_ERROR: 'ORDER_DETAIL/SUBMIT_ORDER_ERROR' = 'ORDER_DETA
 export const GET_ORDER_REQUEST: 'ORDER_DETAIL/GET_ORDER_REQUEST' = 'ORDER_DETAIL/GET_ORDER_REQUEST';
 export const GET_ORDER_SUCCESS: 'ORDER_DETAIL/GET_ORDER_SUCCESS' = 'ORDER_DETAIL/GET_ORDER_SUCCESS';
 export const GET_ORDER_ERROR: 'ORDER_DETAIL/GET_ORDER_ERROR' = 'ORDER_DETAIL/GET_ORDER_ERROR';
+export const CLEAR_ORDER: 'ORDER_DETAIL/CLEAR_ORDER' = 'ORDER_DETAIL/CLEAR_ORDER';
 
 export const submitOrder = (ingredients: string[]) => async (dispatch: AppDispatch) => {
   dispatch({ type: SUBMIT_ORDER_REQUEST });
@@ -46,3 +47,5 @@ export const getOrderInformation = (number: number) => async (dispatch: AppDispa
     });
   }
 };
+
+export const clearOrderInfromation = () => ({ type: CLEAR_ORDER });

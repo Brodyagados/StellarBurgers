@@ -12,6 +12,7 @@ import { useDispatch } from '../../hooks';
 import { FeedPage } from '../../pages/feed';
 import { OrderInformation } from '../order-information';
 import { ProfileOrdersPage } from '../../pages/profile-orders';
+import { clearOrderInfromation } from '../../services/order-detail/actions';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,11 @@ function App() {
 
   const handleModalCloseClick = () => {
     navigate(-1);
+  };
+
+  const handleOrderModalCloseClick = () => {
+    navigate(-1);
+    dispatch(clearOrderInfromation());
   };
 
   return (
@@ -62,7 +68,7 @@ function App() {
           <Route
             path={routes.FEED_ORDER}
             element={
-              <Modal title='' onCloseClick={handleModalCloseClick}>
+              <Modal title='' onCloseClick={handleOrderModalCloseClick}>
                 <OrderInformation />
               </Modal>
             }
@@ -70,7 +76,7 @@ function App() {
           <Route
             path={routes.PROFILE_ORDER}
             element={
-              <Modal title='' onCloseClick={handleModalCloseClick}>
+              <Modal title='' onCloseClick={handleOrderModalCloseClick}>
                 <OrderInformation />
               </Modal>
             }
