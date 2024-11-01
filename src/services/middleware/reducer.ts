@@ -2,25 +2,21 @@ import { TOrdersListModel } from '../../models';
 import {
   WEB_SOCKET_CONNECT,
   WEB_SOCKET_CONNECT_ERROR,
-  WEB_SOCKET_CONNECT_SUCCESS,
   WEB_SOCKET_DISCONNECT,
-  WEB_SOCKET_MESSAGE
+  WEB_SOCKET_MESSAGE,
+  WEB_SOCKET_SEND
 } from './actions';
 
 export type TWebSocketActions =
   | TWebSocketConnectAction
-  | TWebSocketConnectSuccessAction
   | TWebSocketConnectErrorAction
   | TWebSocketMessageAction
-  | TWebSocketDisconnectAction;
+  | TWebSocketDisconnectAction
+  | TWebSocketSendAction;
 
 type TWebSocketConnectAction = {
   type: typeof WEB_SOCKET_CONNECT;
   payload: string;
-};
-
-type TWebSocketConnectSuccessAction = {
-  type: typeof WEB_SOCKET_CONNECT_SUCCESS;
 };
 
 type TWebSocketConnectErrorAction = {
@@ -35,6 +31,11 @@ type TWebSocketMessageAction = {
 
 type TWebSocketDisconnectAction = {
   type: typeof WEB_SOCKET_DISCONNECT;
+};
+
+type TWebSocketSendAction = {
+  type: typeof WEB_SOCKET_SEND;
+  payload: unknown;
 };
 
 type TWebSocketState = {

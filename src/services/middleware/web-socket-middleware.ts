@@ -1,7 +1,7 @@
 import type { Middleware, MiddlewareAPI } from 'redux';
 
 import type { TApplicationActions, AppDispatch, RootState } from '../';
-import { connectError, connectSuccess, disconnect, getMessage, WEB_SOCKET_CONNECT } from './actions';
+import { connectError, send, disconnect, getMessage, WEB_SOCKET_CONNECT, WEB_SOCKET_SEND } from './actions';
 import { TOrdersListModel } from '../../models';
 
 export const webSocketMiddleware = (): Middleware => {
@@ -16,10 +16,6 @@ export const webSocketMiddleware = (): Middleware => {
       }
 
       if (webSocket) {
-        webSocket.onopen = () => {
-          dispatch(connectSuccess());
-        };
-
         webSocket.onerror = () => {
           dispatch(connectError('Ошибка WebSocket соединения'));
         };
@@ -32,6 +28,10 @@ export const webSocketMiddleware = (): Middleware => {
         webSocket.onclose = () => {
           dispatch(disconnect());
         };
+
+        if (action.type === WEB_SOCKET_SEND) {
+          webSocket.send(JSON.stringify(action.payload));
+        }
       }
 
       next(action);
