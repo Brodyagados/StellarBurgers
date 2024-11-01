@@ -26,7 +26,6 @@ export const webSocketMiddleware = (): Middleware => {
 
         webSocket.onmessage = (event) => {
           const ordersList: TOrdersListModel = JSON.parse(event.data);
-          console.log(ordersList);
           dispatch(getMessage(ordersList));
         };
 
