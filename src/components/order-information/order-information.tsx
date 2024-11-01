@@ -1,28 +1,13 @@
 import { CurrencyIcon, FormattedDate } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useSelector } from '../../hooks';
+import { useDispatch, useSelector } from '../../hooks';
 import { TIngredientModel, TOrderModel } from '../../models';
 import { getIngredientsByIdsSelector } from '../../services/ingredients-list/selectors';
 import { orderStatusMetadata } from '../../utils/constants';
 import styles from './order-information.module.css';
-import { useMemo } from 'react';
-
-const order: TOrderModel = {
-  _id: '67221a90b27b06001c3e5207',
-  ingredients: [
-    '643d69a5c3f7b9001cfa093c',
-    '643d69a5c3f7b9001cfa094a',
-    '643d69a5c3f7b9001cfa0944',
-    '643d69a5c3f7b9001cfa0941',
-    '643d69a5c3f7b9001cfa0946',
-    '643d69a5c3f7b9001cfa0940',
-    '643d69a5c3f7b9001cfa093c'
-  ],
-  status: 'done',
-  name: 'Астероидный краторный минеральный традиционный-галактический био-марсианский метеоритный бургер',
-  createdAt: '2024-10-30T11:37:52.123Z',
-  updatedAt: '2024-10-30T11:37:52.900Z',
-  number: 58132
-};
+import { useEffect, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+import { getOrderInformation } from '../../services/order-detail/actions';
+import { getOrderInformationSelector } from '../../services/order-detail/selectors';
 
 type TUniqueIngredient = {
   ingredient: TIngredientModel;
@@ -30,6 +15,19 @@ type TUniqueIngredient = {
 };
 
 const OrderInformation = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getOrderInformation(Number(id)));
+  }, [id]);
+
+  const order = useSelector(getOrderInformationSelector);
+
+  if (!order) {
+    return;
+  }
+
   const { number, createdAt, name, ingredients, status } = order;
   const ingredientsInfo = useSelector((store) => getIngredientsByIdsSelector(store, ingredients));
   const statusMetadata = orderStatusMetadata[status];
