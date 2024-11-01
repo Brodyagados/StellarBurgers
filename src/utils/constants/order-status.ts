@@ -3,13 +3,13 @@ type OrderStatusMetadata = {
   description: string;
 };
 
-export const orderStatus: Record<string, string> = {
-  CREATED: 'created',
-  PENDING: 'pending',
-  DONE: 'done'
-};
+export enum orderStatus {
+  CREATED = 'created',
+  PENDING = 'pending',
+  DONE = 'done'
+}
 
-export const orderStatusMetadata: Record<string, OrderStatusMetadata> = {
+export const orderStatusMetadata: Record<orderStatus, OrderStatusMetadata> = {
   [orderStatus.CREATED]: {
     color: '#F2F2F3',
     description: 'Готовится'
