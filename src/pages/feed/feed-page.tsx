@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from '../../hooks';
 import { useEffect } from 'react';
 import { connect, disconnect } from '../../services/feed/actions';
 import { WEB_SOCKET_ALL_ORDERS_URL } from '../../utils/constants';
-import { getOrdersListSelector } from '../../services/feed/selectors';
+import { getFeedOrdersListSelector } from '../../services/feed/selectors';
 
 const FeedPage = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  const ordersList = useSelector(getOrdersListSelector);
+  const ordersList = useSelector(getFeedOrdersListSelector);
 
   useEffect(() => {
     dispatch(connect(WEB_SOCKET_ALL_ORDERS_URL));
