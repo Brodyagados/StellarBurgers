@@ -3,8 +3,8 @@ import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './register-page.module.css';
 import { routes } from '../../utils/constants';
-import { useDispatch } from 'react-redux';
 import { signIn } from '../../services/user/actions';
+import { useDispatch } from '../../hooks';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -21,8 +21,6 @@ const RegisterPage = () => {
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      // TODO: доработать типизацию на 5 спринте!!!
-      //@ts-ignore
       dispatch(signIn({ name, email, password }));
       navigate(routes.HOME);
     },

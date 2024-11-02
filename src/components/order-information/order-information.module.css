@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  margin: auto;
+}
+
+.number {
+  text-align: center;
+}
+
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 360px;
+  padding-right: 24px;
+  overflow-y: auto;
+}
+
+.ingredient {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  border: 2px solid #801ab3;
+  border-radius: 50%;
+  background-color: #131316;
+}
+
+.footer {
+  display: flex;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}

@@ -6,7 +6,7 @@ import {
   GET_INGREDIENTS_LIST_SUCCESS
 } from './actions';
 
-type TAction = TLoadingAction | TSuccessAction | TErrorAction | TAddAction;
+export type TIngredientsListActions = TLoadingAction | TSuccessAction | TErrorAction | TAddAction;
 
 type TLoadingAction = {
   type: typeof GET_INGREDIENTS_LIST_REQUEST;
@@ -32,17 +32,19 @@ type TAddAction = {
 
 export type TIngredientsListState = {
   ingredients: TIngredientModel[];
+  uniqueIngredients: Map<TIngredientModel['_id'], TIngredientModel>;
   isLoading: boolean;
   error: string | null;
 };
 
 const initialState: TIngredientsListState = {
   ingredients: [],
+  uniqueIngredients: new Map<TIngredientModel['_id'], TIngredientModel>(),
   isLoading: false,
   error: null
 };
 
-export const ingredientsListReducer = (state = initialState, action: TAction) => {
+export const ingredientsListReducer = (state = initialState, action: TIngredientsListActions) => {
   switch (action.type) {
     case GET_INGREDIENTS_LIST_REQUEST: {
       return {
@@ -54,6 +56,7 @@ export const ingredientsListReducer = (state = initialState, action: TAction) =>
       return {
         ...state,
         ingredients: action.payload,
+        uniqueIngredients: new Map(action.payload.map((ingredient) => [ingredient._id, ingredient])),
         isLoading: false,
         error: null
       };
@@ -63,7 +66,8 @@ export const ingredientsListReducer = (state = initialState, action: TAction) =>
         ...state,
         isLoading: false,
         error: action.payload,
-        ingredients: []
+        ingredients: [],
+        uniqueIngredients: new Map<TIngredientModel['_id'], TIngredientModel>()
       };
     }
     case ADD_INGREDIENT_COUNT: {

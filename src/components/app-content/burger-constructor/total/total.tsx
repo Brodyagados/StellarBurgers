@@ -3,7 +3,6 @@ import styles from './total.module.css';
 import { useState } from 'react';
 import { Modal } from '../../../modal';
 import OrderDetails from '../order-details/order-details';
-import { useDispatch, useSelector } from 'react-redux';
 import { submitOrder } from '../../../../services/order-detail/actions';
 import { getIngredientsInConstructorSelector } from '../../../../services/ingredients-in-constructor/selectors';
 import { clearIngredientsInConstructor } from '../../../../services/ingredients-in-constructor/actions';
@@ -11,6 +10,7 @@ import { getOrderDetailSelector } from '../../../../services/order-detail/select
 import { useNavigate } from 'react-router-dom';
 import { getUserSelector } from '../../../../services/user/selectors';
 import { routes } from '../../../../utils/constants';
+import { useDispatch, useSelector } from '../../../../hooks';
 
 type TTotalProps = {
   value: number;
@@ -30,8 +30,6 @@ const Total = ({ value }: TTotalProps) => {
       return;
     }
 
-    // TODO: доработать типизацию на 5 спринте!!!
-    //@ts-ignore
     dispatch(submitOrder([bun!._id, ...ingredients.map((item) => item._id), bun!._id]));
     setShowDetail(true);
   };

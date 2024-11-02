@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
 import styles from './order-details.module.css';
 import { getOrderDetailSelector } from '../../../../services/order-detail/selectors';
+import { useSelector } from '../../../../hooks';
 
 const OrderDetails = () => {
   const { number, isLoading, error } = useSelector(getOrderDetailSelector);

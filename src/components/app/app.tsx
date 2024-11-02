@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { getIngredientsList } from '../../services/ingredients-list/actions';
 import { ForgotPasswordPage, HomePage, LoginPage, ProfilePage, RegisterPage, ResetPasswordPage } from '../../pages';
 import { routes } from '../../utils/constants';
@@ -9,6 +8,11 @@ import { IngredientDetails } from '../app-content/burger-ingredients/ingredient-
 import { Modal } from '../modal';
 import { ProtectedRoute } from '../protected-route';
 import { checkUserAuth } from '../../services/user/actions';
+import { useDispatch } from '../../hooks';
+import { FeedPage } from '../../pages/feed';
+import { OrderInformation } from '../order-information';
+import { ProfileOrdersPage } from '../../pages/profile-orders';
+import { clearOrderInfromation } from '../../services/order-detail/actions';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,16 +22,17 @@ function App() {
   const backgroundLocation = location.state && location.state.backgroundLocation;
 
   useEffect(() => {
-    // TODO: доработать типизацию на 5 спринте!!!
-    //@ts-ignore
     dispatch(getIngredientsList());
-    // TODO: доработать типизацию на 5 спринте!!!
-    //@ts-ignore
     dispatch(checkUserAuth());
   }, []);
 
-  const handleIngredientDetailCloseClick = () => {
+  const handleModalCloseClick = () => {
     navigate(-1);
+  };
+
+  const handleOrderModalCloseClick = () => {
+    navigate(-1);
+    dispatch(clearOrderInfromation());
   };
 
   return (
@@ -41,10 +46,12 @@ function App() {
           <Route path={routes.RESET_PASSWORD} element={<ProtectedRoute component={<ResetPasswordPage />} onlyUnAuth />} />
           <Route element={<ProfileLayout />}>
             <Route path={routes.PROFILE} element={<ProtectedRoute component={<ProfilePage />} />} />
-            <Route path={routes.PROFILE_ORDERS} element='' /> {/* TODO: обернуть в ProtectedRoute после реализации страницы */}
+            <Route path={routes.PROFILE_ORDERS} element={<ProtectedRoute component={<ProfileOrdersPage />} />} />
           </Route>
           <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
-          <Route path={routes.ORDERS} element='' />
+          <Route path={routes.FEED} element={<FeedPage />} />
+          <Route path={routes.FEED_ORDER} element={<OrderInformation />} />
+          <Route path={routes.PROFILE_ORDER} element={<ProtectedRoute component={<OrderInformation />} />} />
         </Route>
       </Routes>
 
@@ -53,8 +60,24 @@ function App() {
           <Route
             path={routes.INGREDIENT}
             element={
-              <Modal title='Детали ингредиента' onCloseClick={handleIngredientDetailCloseClick}>
+              <Modal title='Детали ингредиента' onCloseClick={handleModalCloseClick}>
                 <IngredientDetails />
+              </Modal>
+            }
+          />
+          <Route
+            path={routes.FEED_ORDER}
+            element={
+              <Modal title='' onCloseClick={handleOrderModalCloseClick}>
+                <OrderInformation />
+              </Modal>
+            }
+          />
+          <Route
+            path={routes.PROFILE_ORDER}
+            element={
+              <Modal title='' onCloseClick={handleOrderModalCloseClick}>
+                <OrderInformation />
               </Modal>
             }
           />

@@ -1,12 +1,12 @@
-import { Dispatch, UnknownAction } from 'redux';
 import { TLoginDto, TSignUpDto, TUserModel } from '../../models';
 import { AccountApi } from '../../api';
+import { AppDispatch } from '..';
 
-export const USER_REQUEST = 'USER/REQUEST';
-export const USER_SUCCESS = 'USER/SUCCESS';
-export const USER_ERROR = 'USER/ERROR';
-export const SET_USER_AUTH_CHECKED = 'USER/SET_AUTH_CHECKED';
-export const SET_USER = 'USER/SET';
+export const USER_REQUEST: 'USER/REQUEST' = 'USER/REQUEST';
+export const USER_SUCCESS: 'USER/SUCCESS' = 'USER/SUCCESS';
+export const USER_ERROR: 'USER/ERROR' = 'USER/ERROR';
+export const SET_USER_AUTH_CHECKED: 'USER/SET_AUTH_CHECKED' = 'USER/SET_AUTH_CHECKED';
+export const SET_USER: 'USER/SET' = 'USER/SET';
 
 export const request = () => ({ type: USER_REQUEST });
 
@@ -17,7 +17,12 @@ const setError = (errorMessage: string | null) => ({
   payload: errorMessage ?? 'Неизвестная ошибка'
 });
 
-export const signIn = (userData: TSignUpDto) => async (dispatch: Dispatch) => {
+export const setUser = (user: TUserModel | null) => ({
+  type: SET_USER,
+  payload: user
+});
+
+export const signIn = (userData: TSignUpDto) => async (dispatch: AppDispatch) => {
   dispatch(request());
 
   try {
@@ -34,7 +39,7 @@ export const signIn = (userData: TSignUpDto) => async (dispatch: Dispatch) => {
   }
 };
 
-export const login = (userData: TLoginDto) => async (dispatch: Dispatch<UnknownAction>) => {
+export const login = (userData: TLoginDto) => async (dispatch: AppDispatch) => {
   dispatch(request());
 
   try {
@@ -56,12 +61,7 @@ export const setAuthChecked = (isAuthChecked: boolean) => ({
   payload: isAuthChecked
 });
 
-export const setUser = (user: TUserModel | null) => ({
-  type: SET_USER,
-  payload: user
-});
-
-export const checkUserAuth = () => async (dispatch: Dispatch<UnknownAction>) => {
+export const checkUserAuth = () => async (dispatch: AppDispatch) => {
   if (localStorage.getItem('accessToken')) {
     AccountApi.get()
       .then(({ user }) => {

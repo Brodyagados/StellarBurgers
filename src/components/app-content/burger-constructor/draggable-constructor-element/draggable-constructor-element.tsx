@@ -1,6 +1,5 @@
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import styles from './draggable-constructor-element.module.css';
-import { useDispatch, useSelector } from 'react-redux';
 import { addIngredientCount } from '../../../../services/ingredients-list/actions';
 import {
   removeIngredientInConstructor,
@@ -9,6 +8,7 @@ import {
 import { useDrag, useDrop } from 'react-dnd';
 import { useCallback, useRef } from 'react';
 import { getIngredientsInConstructorSelector } from '../../../../services/ingredients-in-constructor/selectors';
+import { useDispatch, useSelector } from '../../../../hooks';
 
 type TDraggableConstructorElementProps = {
   id: string;

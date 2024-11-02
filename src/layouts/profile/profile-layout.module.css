@@ -1,7 +1,6 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-grow: 1;
 }
 
@@ -14,6 +13,11 @@
 
 .left {
   width: 320px;
+}
+
+.right {
+  display: flex;
+  width: 640px;
 }
 
 .links {

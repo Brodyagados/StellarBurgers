@@ -3,8 +3,8 @@ import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './login-page.module.css';
 import { routes } from '../../utils/constants';
-import { useDispatch } from 'react-redux';
 import { login } from '../../services/user/actions';
+import { useDispatch } from '../../hooks';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -18,8 +18,6 @@ const LoginPage = () => {
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      // TODO: доработать типизацию на 5 спринте!!!
-      //@ts-ignore
       dispatch(login({ email, password }));
     },
     [email, password]

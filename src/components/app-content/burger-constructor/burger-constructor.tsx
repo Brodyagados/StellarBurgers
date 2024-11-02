@@ -2,13 +2,13 @@ import styles from './burger-constructor.module.css';
 import { useCallback, useMemo } from 'react';
 import { DraggableConstructorElement } from './draggable-constructor-element';
 import { Total } from './total';
-import { useDispatch, useSelector } from 'react-redux';
 import { getIngredientsInConstructorSelector } from '../../../services/ingredients-in-constructor/selectors';
 import { IngredientsContainer } from './ingredients-container';
 import { useDrop } from 'react-dnd';
 import { addBunInConstructor, addIngredientInConstructor } from '../../../services/ingredients-in-constructor/actions';
-import { TIngredientModel } from '../../../models';
+import { TConstructorIngredientModel, TIngredientModel } from '../../../models';
 import { addIngredientCount } from '../../../services/ingredients-list/actions';
+import { useDispatch, useSelector } from '../../../hooks';
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const BurgerConstructor = () => {
 
   const handleOnDropBun = useCallback(
     (item: TIngredientModel) => {
-      dispatch(addBunInConstructor(item));
+      dispatch(addBunInConstructor(item as TConstructorIngredientModel));
       if (bun) {
         dispatch(addIngredientCount(bun._id, -2));
       }

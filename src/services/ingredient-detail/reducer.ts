@@ -1,7 +1,7 @@
 import { TIngredientModel } from '../../models';
 import { REMOVE_INGREDIENT_DETAIL, SET_INGREDIENT_DETAIL } from './actions';
 
-type TAction = TSetAction | TRemoveAction;
+export type TIngredientDetailActions = TSetAction | TRemoveAction;
 
 type TSetAction = {
   type: typeof SET_INGREDIENT_DETAIL;
@@ -20,7 +20,7 @@ const initialState: TIngredientDetailState = {
   ingredient: null
 };
 
-export const ingredientDetailReducer = (state = initialState, action: TAction) => {
+export const ingredientDetailReducer = (state = initialState, action: TIngredientDetailActions) => {
   switch (action.type) {
     case SET_INGREDIENT_DETAIL: {
       return {
