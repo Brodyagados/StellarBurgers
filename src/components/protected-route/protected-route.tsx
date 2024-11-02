@@ -13,7 +13,7 @@ const ProtectedRoute = ({ component, onlyUnAuth = false }: TProtectedRouteProps)
   const { user, isAuthChecked } = useSelector(getUserAuthCheckedSelector);
 
   if (!isAuthChecked) {
-    return <span>Загрузка...</span>;
+    return <span className='text text_type_main-medium'>Загрузка...</span>;
   }
 
   if (user && onlyUnAuth) {

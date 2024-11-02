@@ -20,16 +20,16 @@ const ProfileOrdersPage = () => {
     };
   }, []);
 
-  return (
-    ordersList && (
-      <div className={styles.container}>
-        {ordersList.orders.map((order) => (
-          <Link key={order._id} to={`/profile/orders/${order.number}`} state={{ backgroundLocation: location }}>
-            <Order data={order} hasStatus />
-          </Link>
-        ))}
-      </div>
-    )
+  return ordersList ? (
+    <div className={styles.container}>
+      {ordersList.orders.map((order) => (
+        <Link key={order._id} to={`/profile/orders/${order.number}`} state={{ backgroundLocation: location }}>
+          <Order data={order} hasStatus />
+        </Link>
+      ))}
+    </div>
+  ) : (
+    <span className='text text_type_main-medium'>Загрузка списка заказов...</span>
   );
 };
 

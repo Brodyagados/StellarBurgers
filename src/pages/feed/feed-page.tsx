@@ -27,14 +27,20 @@ const FeedPage = () => {
       <div className={styles.main}>
         <Title text='Лента заказов' />
         <div className={`mt-6 ${styles.content}`}>
-          <div className={styles.list}>
-            {ordersList?.orders?.map((order) => (
-              <Link key={order._id} to={`/feed/${order.number}`} state={{ backgroundLocation: location }}>
-                <Order data={order} />
-              </Link>
-            ))}
-          </div>
-          <div className={styles.table}>{ordersList && <OrdersTable data={ordersList} />}</div>
+          {ordersList ? (
+            <>
+              <div className={styles.list}>
+                {ordersList?.orders?.map((order) => (
+                  <Link key={order._id} to={`/feed/${order.number}`} state={{ backgroundLocation: location }}>
+                    <Order data={order} />
+                  </Link>
+                ))}
+              </div>
+              <div className={styles.table}>{ordersList && <OrdersTable data={ordersList} />}</div>
+            </>
+          ) : (
+            <span className='text text_type_main-medium'>Загрузка списка заказов...</span>
+          )}
         </div>
       </div>
     </div>
