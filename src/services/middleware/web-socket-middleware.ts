@@ -21,17 +21,24 @@ type TWebSocketsActions = {
   sendMessage?: typeof FEED_SEND | typeof PROFILE_ORDERS_SEND;
 };
 
+const RECONNECT_MS = 3000;
+
 export const webSocketMiddleware = (webSocketActions: TWebSocketsActions): Middleware => {
   return ((store: MiddlewareAPI<AppDispatch, RootState>) => {
     const { connect, disconnect, onError, onMessage, onClose, sendMessage } = webSocketActions;
 
     let webSocket: WebSocket | null = null;
+    let isConnected = false;
+    let url = '';
+    let reconnectTimer = 0;
 
     return (next) => (action: TApplicationActions) => {
       const { dispatch } = store;
 
       if (action.type === connect) {
         webSocket = new WebSocket(action.payload);
+        isConnected = true;
+        url = action.payload;
       }
 
       if (webSocket) {
@@ -46,10 +53,24 @@ export const webSocketMiddleware = (webSocketActions: TWebSocketsActions): Middl
 
         webSocket.onclose = () => {
           dispatch({ type: onClose });
+
+          if (isConnected) {
+            reconnectTimer = setTimeout(() => {
+              dispatch({ type: connect, payload: url });
+            }, RECONNECT_MS);
+          }
         };
 
         if (action.type === sendMessage) {
           webSocket.send(JSON.stringify(action.payload));
+        }
+
+        if (action.type === disconnect) {
+          webSocket.close();
+          webSocket = null;
+          isConnected = false;
+          clearTimeout(reconnectTimer);
+          reconnectTimer = 0;
         }
       }
 
