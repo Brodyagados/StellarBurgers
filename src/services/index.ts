@@ -6,6 +6,7 @@ import { orderDetailReducer, TOrderDetailActions } from './order-detail/reducer'
 import { TUserActions, userReducer } from './user/reducer';
 import { ThunkDispatch } from 'redux-thunk';
 import { feedReducer, TFeedActions } from './feed/reducer';
+import { profileOrdersReducer, TProfileOrdersActions } from './profile-orders/reducer';
 
 export const rootReducer = combineReducers({
   ingredientsList: ingredientsListReducer,
@@ -13,7 +14,8 @@ export const rootReducer = combineReducers({
   ingredientDetail: ingredientDetailReducer,
   orderDetail: orderDetailReducer,
   user: userReducer,
-  feed: feedReducer
+  feed: feedReducer,
+  profileOrders: profileOrdersReducer
 });
 
 export type TApplicationActions =
@@ -22,6 +24,7 @@ export type TApplicationActions =
   | TIngredientsListActions
   | TOrderDetailActions
   | TUserActions
-  | TFeedActions;
+  | TFeedActions
+  | TProfileOrdersActions;
 export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = ThunkDispatch<RootState, unknown, TApplicationActions>;
