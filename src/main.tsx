@@ -30,13 +30,16 @@ const store = createStore(
         onClose: FEED_CLOSE,
         disconnect: FEED_DISCONNECT
       }),
-      webSocketMiddleware({
-        connect: PROFILE_ORDERS_CONNECT,
-        onError: PROFILE_ORDERS_CONNECT_ERROR,
-        onMessage: PROFILE_ORDERS_MESSAGE,
-        onClose: PROFILE_ORDERS_CLOSE,
-        disconnect: PROFILE_ORDERS_DISCONNECT
-      })
+      webSocketMiddleware(
+        {
+          connect: PROFILE_ORDERS_CONNECT,
+          onError: PROFILE_ORDERS_CONNECT_ERROR,
+          onMessage: PROFILE_ORDERS_MESSAGE,
+          onClose: PROFILE_ORDERS_CLOSE,
+          disconnect: PROFILE_ORDERS_DISCONNECT
+        },
+        true
+      )
     )
   )
 );

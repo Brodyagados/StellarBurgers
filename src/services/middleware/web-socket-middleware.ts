@@ -11,6 +11,7 @@ import {
   PROFILE_ORDERS_MESSAGE,
   PROFILE_ORDERS_SEND
 } from '../profile-orders/actions';
+import { AccountApi } from '../../api';
 
 type TWebSocketsActions = {
   connect: typeof FEED_CONNECT | typeof PROFILE_ORDERS_CONNECT;
@@ -23,7 +24,7 @@ type TWebSocketsActions = {
 
 const RECONNECT_MS = 3000;
 
-export const webSocketMiddleware = (webSocketActions: TWebSocketsActions): Middleware => {
+export const webSocketMiddleware = (webSocketActions: TWebSocketsActions, isAuth?: boolean): Middleware => {
   return ((store: MiddlewareAPI<AppDispatch, RootState>) => {
     const { connect, disconnect, onError, onMessage, onClose, sendMessage } = webSocketActions;
 
@@ -47,8 +48,26 @@ export const webSocketMiddleware = (webSocketActions: TWebSocketsActions): Middl
         };
 
         webSocket.onmessage = (event) => {
-          const message: TOrdersListModel = JSON.parse(event.data);
-          dispatch({ type: onMessage, payload: message });
+          const message = JSON.parse(event.data);
+
+          if (isAuth && message.message === 'Invalid or missing token') {
+            AccountApi.refreshToken()
+              .then((refreshData) => {
+                dispatch({
+                  type: connect,
+                  payload: `${url}?token=${refreshData.accessToken?.replace('Bearer ', '')}`
+                });
+              })
+              .catch((error) => {
+                dispatch({ type: onError, payload: (error as Error).message });
+              });
+
+            dispatch({ type: disconnect });
+
+            return;
+          }
+
+          dispatch({ type: onMessage, payload: message as TOrdersListModel });
         };
 
         webSocket.onclose = () => {
