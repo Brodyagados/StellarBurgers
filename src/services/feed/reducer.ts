@@ -38,14 +38,12 @@ type TFeedSendAction = {
 };
 
 type TFeedState = {
-  wsUrl: string | null;
   isConnected: boolean;
   ordersList: TOrdersListModel | null;
   error: string | null;
 };
 
 const initialState: TFeedState = {
-  wsUrl: null,
   isConnected: false,
   ordersList: null,
   error: null
