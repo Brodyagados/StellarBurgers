@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { Order } from '../../components/order';
 import { useDispatch, useSelector } from '../../hooks';
 import { useEffect } from 'react';
-import { getOrdersListSelector } from '../../services/middleware/selectors';
+import { getOrdersListSelector } from '../../services/feed/selectors';
 import { WEB_SOCKET_PROFILE_ORDERS_URL } from '../../utils/constants';
-import { connect, disconnect } from '../../services/middleware/actions';
+import { connect, disconnect } from '../../services/feed/actions';
 
 const ProfileOrdersPage = () => {
   const location = useLocation();

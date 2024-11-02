@@ -5,9 +5,9 @@ import { OrdersTable } from '../../components/orders-table';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../hooks';
 import { useEffect } from 'react';
-import { connect, disconnect } from '../../services/middleware/actions';
+import { connect, disconnect } from '../../services/feed/actions';
 import { WEB_SOCKET_ALL_ORDERS_URL } from '../../utils/constants';
-import { getOrdersListSelector } from '../../services/middleware/selectors';
+import { getOrdersListSelector } from '../../services/feed/selectors';
 
 const FeedPage = () => {
   const location = useLocation();
