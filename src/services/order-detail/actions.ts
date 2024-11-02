@@ -16,7 +16,10 @@ export const submitOrder = (ingredients: string[]) => async (dispatch: AppDispat
   dispatch({ type: SUBMIT_ORDER_REQUEST });
 
   try {
-    const data = await apiClient.request<TOrderDetailModel>('/orders', { method: 'POST', body: JSON.stringify({ ingredients }) });
+    const data = await apiClient.requestWithRefresh<TOrderDetailModel>('/orders', {
+      method: 'POST',
+      body: JSON.stringify({ ingredients })
+    });
     dispatch({
       type: SUBMIT_ORDER_SUCCESS,
       payload: data.order.number

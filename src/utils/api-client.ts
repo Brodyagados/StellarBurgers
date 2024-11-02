@@ -5,11 +5,12 @@ const BASE_URL = 'https://norma.nomoreparties.space/api';
 class ApiClient {
   request = async <T>(url: string, options?: RequestInit): Promise<T> => {
     const response = await fetch(`${BASE_URL}${url}`, {
+      ...options,
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      ...options
+        'Content-Type': 'application/json',
+        ...options?.headers
+      }
     });
 
     if (!response.ok) {
