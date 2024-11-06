@@ -45,45 +45,27 @@ type TProfileOrdersSendAction = {
 };
 
 type TProfileOrdersState = {
-  isConnected: boolean;
   ordersList: TOrdersListModel | null;
   error: string | null;
 };
 
 const initialState: TProfileOrdersState = {
-  isConnected: false,
   ordersList: null,
   error: null
 };
 
 export const profileOrdersReducer = (state = initialState, action: TProfileOrdersActions) => {
   switch (action.type) {
-    case PROFILE_ORDERS_CONNECT:
-      return {
-        ...state,
-        error: null,
-        isConnected: true
-      };
-
     case PROFILE_ORDERS_CONNECT_ERROR:
       return {
         ...state,
-        error: action.payload,
-        isConnected: false
+        error: action.payload
       };
 
     case PROFILE_ORDERS_CLOSE:
       return {
         ...state,
-        error: null,
-        isConnected: false
-      };
-
-    case PROFILE_ORDERS_DISCONNECT:
-      return {
-        ...state,
-        error: null,
-        isConnected: false
+        error: null
       };
 
     case PROFILE_ORDERS_MESSAGE:
@@ -92,6 +74,7 @@ export const profileOrdersReducer = (state = initialState, action: TProfileOrder
         error: null,
         ordersList: action.payload
       };
+
     default:
       return state;
   }
