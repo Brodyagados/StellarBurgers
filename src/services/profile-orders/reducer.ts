@@ -49,7 +49,7 @@ type TProfileOrdersState = {
   error: string | null;
 };
 
-const initialState: TProfileOrdersState = {
+export const initialState: TProfileOrdersState = {
   ordersList: null,
   error: null
 };
