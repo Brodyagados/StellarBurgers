@@ -43,7 +43,7 @@ export type TIngredientsInConstructorState = {
   ingredients: TConstructorIngredientModel[];
 };
 
-const initialState: TIngredientsInConstructorState = {
+export const initialState: TIngredientsInConstructorState = {
   bun: null,
   ingredients: []
 };
