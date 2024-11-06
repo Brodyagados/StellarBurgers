@@ -57,7 +57,7 @@ export type TOrderDetailState = {
   order: TOrderModel | null;
 };
 
-const initialState: TOrderDetailState = {
+export const initialState: TOrderDetailState = {
   number: null,
   isLoading: false,
   error: null,
