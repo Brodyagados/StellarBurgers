@@ -10,9 +10,9 @@ export const SET_USER: 'USER/SET' = 'USER/SET';
 
 export const request = () => ({ type: USER_REQUEST });
 
-const setSuccess = () => ({ type: USER_SUCCESS });
+export const setSuccess = () => ({ type: USER_SUCCESS });
 
-const setError = (errorMessage: string | null) => ({
+export const setError = (errorMessage: string | null) => ({
   type: USER_ERROR,
   payload: errorMessage ?? 'Неизвестная ошибка'
 });
