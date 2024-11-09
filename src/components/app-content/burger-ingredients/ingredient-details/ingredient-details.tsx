@@ -14,7 +14,9 @@ const IngredientDetails = () => {
       {data ? (
         <>
           <img src={data.image_large} alt={`${data.name}.`} />
-          <span className='text text_type_main-medium mt-4'>{data.name}</span>
+          <span className='text text_type_main-medium mt-4' data-testid='ingredient_detail_name'>
+            {data.name}
+          </span>
           <div className={`${styles.macronutrients} mt-8`}>
             <Macronutrient name='Калории, ккал' value={data.proteins} />
             <Macronutrient name='Белки, г' value={data.fat} />
