@@ -39,7 +39,7 @@ const Total = ({ value }: TTotalProps) => {
   };
 
   return (
-    <div className={`${styles.container} mt-10`}>
+    <div className={`${styles.container} mt-10`} data-testid='constructor-total'>
       <div className={styles.totalPrice}>
         <span className='text text_type_digits-medium'>{value}</span>
         <CurrencyIcon type='primary' />

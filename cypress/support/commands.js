@@ -36,8 +36,10 @@
 //   }
 // }
 
+import { BASE_URL } from '../../src/utils/api-client';
+
 Cypress.Commands.add('prepare', () => {
-  cy.intercept('GET', 'https://norma.nomoreparties.space/api/ingredients', { fixture: 'ingredients' }).as('getIngredients');
+  cy.intercept('GET', `${BASE_URL}/ingredients`, { fixture: 'ingredients' }).as('getIngredients');
   cy.visit('http://localhost:5173');
   cy.wait('@getIngredients');
 });

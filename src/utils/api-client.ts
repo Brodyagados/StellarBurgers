@@ -1,6 +1,6 @@
 import { AccountApi } from '../api';
 
-const BASE_URL = 'https://norma.nomoreparties.space/api';
+export const BASE_URL = 'https://norma.nomoreparties.space/api';
 
 class ApiClient {
   request = async <T>(url: string, options?: RequestInit): Promise<T> => {

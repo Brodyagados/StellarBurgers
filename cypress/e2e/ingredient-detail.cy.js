@@ -5,8 +5,8 @@ describe('Карточка с информацией об ингредиенте
 
   it('открытие карточки ингредиента', () => {
     cy.get('[data-testid=ingredient_bun_1]').click();
-    cy.get('[data-testid=modal_title]').should('text', 'Детали ингредиента');
-    cy.get('[data-testid=ingredient_detail_name]').should('text', 'Булка 1');
+    cy.get('[data-testid=modal_title]').should('have.text', 'Детали ингредиента');
+    cy.get('[data-testid=ingredient_detail_name]').should('have.text', 'Булка 1');
   });
 
   it('закрытие карточки ингредиента кнопкой "Закрыть"', () => {
