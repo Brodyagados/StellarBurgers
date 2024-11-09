@@ -1,7 +1,6 @@
 describe('Карточка с информацией об ингредиенте', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients' });
-    cy.visit('http://localhost:5173');
+    cy.prepare();
   });
 
   it('открытие карточки ингредиента', () => {
@@ -18,7 +17,7 @@ describe('Карточка с информацией об ингредиенте
 
   it('закрытие карточки ингредиента нажатием на оверлей', () => {
     cy.get('[data-testid=ingredient_bun_1]').click();
-    cy.get('[data-testid=modal_overlay]').click();
+    cy.get('[data-testid=modal_overlay]').click(0, 0);
     cy.get('[data-testid=modal_title]').should('not.exist');
   });
 
