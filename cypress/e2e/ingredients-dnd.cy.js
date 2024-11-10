@@ -1,5 +1,3 @@
-import { BASE_URL } from '../../src/utils/api-client';
-
 describe('Перетаскивание ингредиента в конструктор', () => {
   beforeEach(() => {
     cy.prepare();
@@ -38,8 +36,8 @@ describe('Перетаскивание ингредиента в констру�
   });
 
   it('создание заказа', () => {
-    cy.intercept('POST', `${BASE_URL}/auth/login`).as('login');
-    cy.intercept('POST', `${BASE_URL}/orders`, { fixture: 'created-order' }).as('createOrder');
+    cy.intercept('POST', 'api/auth/login').as('login');
+    cy.intercept('POST', 'api/orders', { fixture: 'created-order' }).as('createOrder');
 
     cy.visit('/login');
     cy.get('[name=email]').type('ogbu@test.ru');

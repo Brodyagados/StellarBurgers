@@ -36,10 +36,8 @@
 //   }
 // }
 
-import { BASE_URL } from '../../src/utils/api-client';
-
 Cypress.Commands.add('prepare', () => {
-  cy.intercept('GET', `${BASE_URL}/ingredients`, { fixture: 'ingredients' }).as('getIngredients');
+  cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients' }).as('getIngredients');
   cy.visit('/');
   cy.wait('@getIngredients');
 });
