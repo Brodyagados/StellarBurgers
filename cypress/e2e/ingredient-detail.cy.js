@@ -4,26 +4,26 @@ describe('Карточка с информацией об ингредиенте
   });
 
   it('открытие карточки ингредиента', () => {
-    cy.get('[data-testid=ingredient_bun_1]').click();
-    cy.get('[data-testid=modal_title]').should('have.text', 'Детали ингредиента');
+    cy.getBun().click();
+    cy.getModalTitle().should('have.text', 'Детали ингредиента');
     cy.get('[data-testid=ingredient_detail_name]').should('have.text', 'Булка 1');
   });
 
   it('закрытие карточки ингредиента кнопкой "Закрыть"', () => {
-    cy.get('[data-testid=ingredient_bun_1]').click();
+    cy.getBun().click();
     cy.get('[data-testid=modal_close_button]').click();
-    cy.get('[data-testid=modal_title]').should('not.exist');
+    cy.getModalTitle().should('not.exist');
   });
 
   it('закрытие карточки ингредиента нажатием на оверлей', () => {
-    cy.get('[data-testid=ingredient_bun_1]').click();
+    cy.getBun().click();
     cy.get('[data-testid=modal_overlay]').click(0, 0);
-    cy.get('[data-testid=modal_title]').should('not.exist');
+    cy.getModalTitle().should('not.exist');
   });
 
   it('закрытие карточки ингредиента кнопкой "Esc"', () => {
-    cy.get('[data-testid=ingredient_bun_1]').click();
+    cy.getBun().click();
     cy.get('body').type('{esc}');
-    cy.get('[data-testid=modal_title]').should('not.exist');
+    cy.getModalTitle().should('not.exist');
   });
 });

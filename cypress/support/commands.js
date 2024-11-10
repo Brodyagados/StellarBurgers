@@ -41,3 +41,57 @@ Cypress.Commands.add('prepare', () => {
   cy.visit('/');
   cy.wait('@getIngredients');
 });
+
+Cypress.Commands.add('authorize', () => {
+  cy.visit('/login');
+  cy.get('[name=email]').type('ogbu@test.ru');
+  cy.get('[name=password]').type('ogbu123');
+  cy.get('[type=submit]').contains('Войти').click();
+  cy.wait('@login');
+});
+
+Cypress.Commands.add('getBun', () => {
+  cy.get('[data-testid=ingredient_bun_1]');
+});
+
+Cypress.Commands.add('checkBunCounter', (count) => {
+  cy.getBun().get('.counter__num').should('have.text', `${count}`); //так будет работать для "count: string | number"
+});
+
+Cypress.Commands.add('getIngredient', () => {
+  cy.get('[data-testid=ingredient_ingredient_1]');
+});
+
+Cypress.Commands.add('checkIngredientCounter', (count) => {
+  cy.getIngredient().get('.counter__num').should('have.text', `${count}`); //так будет работать для "count: string | number"
+});
+
+Cypress.Commands.add('getConstructorBunTop', () => {
+  cy.get('[data-testid=constructor_bun_top]');
+});
+
+Cypress.Commands.add('getConstructorBunBottom', () => {
+  cy.get('[data-testid=constructor_bun_bottom]');
+});
+
+Cypress.Commands.add('dragAndDropBun', (isTopConstructorItem = false) => {
+  cy.getBun().trigger('dragstart');
+  (isTopConstructorItem ? cy.getConstructorBunTop() : cy.getConstructorBunBottom()).trigger('drop');
+});
+
+Cypress.Commands.add('getConstructorIngredient', () => {
+  cy.get('[data-testid=constructor_ingredient]');
+});
+
+Cypress.Commands.add('dragAndDropIngredient', () => {
+  cy.getIngredient().trigger('dragstart');
+  cy.getConstructorIngredient().trigger('drop');
+});
+
+Cypress.Commands.add('checkConstructorElementText', (text) => {
+  cy.get('.constructor-element__text').contains(text);
+});
+
+Cypress.Commands.add('getModalTitle', () => {
+  cy.get('[data-testid=modal_title]');
+});
