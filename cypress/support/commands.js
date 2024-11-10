@@ -40,6 +40,6 @@ import { BASE_URL } from '../../src/utils/api-client';
 
 Cypress.Commands.add('prepare', () => {
   cy.intercept('GET', `${BASE_URL}/ingredients`, { fixture: 'ingredients' }).as('getIngredients');
-  cy.visit('http://localhost:5173');
+  cy.visit('/');
   cy.wait('@getIngredients');
 });

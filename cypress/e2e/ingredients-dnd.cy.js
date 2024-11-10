@@ -41,7 +41,7 @@ describe('Перетаскивание ингредиента в констру�
     cy.intercept('POST', `${BASE_URL}/auth/login`).as('login');
     cy.intercept('POST', `${BASE_URL}/orders`, { fixture: 'created-order' }).as('createOrder');
 
-    cy.visit('http://localhost:5173/#/login');
+    cy.visit('/login');
     cy.get('[name=email]').type('ogbu@test.ru');
     cy.get('[name=password]').type('ogbu123');
     cy.get('[type=submit]').contains('Войти').click();
