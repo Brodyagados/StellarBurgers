@@ -37,7 +37,7 @@ export type TIngredientsListState = {
   error: string | null;
 };
 
-const initialState: TIngredientsListState = {
+export const initialState: TIngredientsListState = {
   ingredients: [],
   uniqueIngredients: new Map<TIngredientModel['_id'], TIngredientModel>(),
   isLoading: false,

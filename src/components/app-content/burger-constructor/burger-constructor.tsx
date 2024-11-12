@@ -52,7 +52,7 @@ const BurgerConstructor = () => {
 
   return (
     <div className={`${styles.container} pt-25`}>
-      <div ref={dropBunTopRef}>
+      <div ref={dropBunTopRef} data-testid={`constructor_bun_top`}>
         {bun ? (
           <DraggableConstructorElement
             id={bun._id}
@@ -66,7 +66,7 @@ const BurgerConstructor = () => {
           <IngredientsContainer type='bun-top' />
         )}
       </div>
-      <div className={`${styles.scrollableList} mt-4 mb-4`} ref={dropIngredientRef}>
+      <div className={`${styles.scrollableList} mt-4 mb-4`} ref={dropIngredientRef} data-testid={`constructor_ingredient`}>
         {ingredients.length > 0 ? (
           ingredients.map((item, index) => (
             <DraggableConstructorElement
@@ -83,7 +83,7 @@ const BurgerConstructor = () => {
           <IngredientsContainer type='ingredient' />
         )}
       </div>
-      <div ref={dropBunBottomRef}>
+      <div ref={dropBunBottomRef} data-testid={`constructor_bun_bottom`}>
         {bun ? (
           <DraggableConstructorElement
             id={bun._id}

@@ -74,7 +74,7 @@ export const webSocketMiddleware = (webSocketActions: TWebSocketsActions, isAuth
           dispatch({ type: onClose });
 
           if (isConnected) {
-            reconnectTimer = setTimeout(() => {
+            reconnectTimer = window.setTimeout(() => {
               dispatch({ type: connect, payload: url });
             }, RECONNECT_MS);
           }

@@ -8,9 +8,9 @@ type TModalHeaderProps = {
 
 const ModalHeader = ({ title, onClick }: TModalHeaderProps) => {
   return (
-    <header className={styles.container}>
+    <header className={styles.container} data-testid='modal_title'>
       {title && <span className='text text_type_main-large'>{title}</span>}
-      <button className={styles.closeButton} onClick={onClick}>
+      <button className={styles.closeButton} onClick={onClick} data-testid='modal_close_button'>
         <CloseIcon type='primary' />
       </button>
     </header>

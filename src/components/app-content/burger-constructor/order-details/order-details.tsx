@@ -23,7 +23,9 @@ const OrderDetails = () => {
 
   return (
     <div className={styles.container}>
-      <span className='text text_type_digits-large'>{number}</span>
+      <span className='text text_type_digits-large' data-testid='order_detail_number'>
+        {number}
+      </span>
       <span className='text text_type_main-medium mt-8'>идентификатор заказа</span>
       <span className='text text_type_main-default mt-15'>Ваш заказ начали готовить</span>
       <span className='text text_type_main-default text_color_inactive mt-2'>Дождитесь готовности на орбитальной станции</span>

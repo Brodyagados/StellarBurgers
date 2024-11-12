@@ -1,17 +1,25 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { getIngredientsList } from '../../services/ingredients-list/actions';
-import { ForgotPasswordPage, HomePage, LoginPage, ProfilePage, RegisterPage, ResetPasswordPage } from '../../pages';
+import {
+  FeedOrderPage,
+  FeedPage,
+  ForgotPasswordPage,
+  HomePage,
+  IngredientPage,
+  LoginPage,
+  ProfileOrderPage,
+  ProfileOrdersPage,
+  ProfilePage,
+  RegisterPage,
+  ResetPasswordPage
+} from '../../pages';
 import { routes } from '../../utils/constants';
 import { HomeLayout, ProfileLayout } from '../../layouts';
-import { IngredientDetails } from '../app-content/burger-ingredients/ingredient-details';
 import { Modal } from '../modal';
 import { ProtectedRoute } from '../protected-route';
 import { checkUserAuth } from '../../services/user/actions';
 import { useDispatch } from '../../hooks';
-import { FeedPage } from '../../pages/feed';
-import { OrderInformation } from '../order-information';
-import { ProfileOrdersPage } from '../../pages/profile-orders';
 import { clearOrderInfromation } from '../../services/order-detail/actions';
 
 function App() {
@@ -48,10 +56,10 @@ function App() {
             <Route path={routes.PROFILE} element={<ProtectedRoute component={<ProfilePage />} />} />
             <Route path={routes.PROFILE_ORDERS} element={<ProtectedRoute component={<ProfileOrdersPage />} />} />
           </Route>
-          <Route path={routes.INGREDIENT} element={<IngredientDetails />} />
+          <Route path={routes.INGREDIENT} element={<IngredientPage />} />
           <Route path={routes.FEED} element={<FeedPage />} />
-          <Route path={routes.FEED_ORDER} element={<OrderInformation />} />
-          <Route path={routes.PROFILE_ORDER} element={<ProtectedRoute component={<OrderInformation />} />} />
+          <Route path={routes.FEED_ORDER} element={<FeedOrderPage />} />
+          <Route path={routes.PROFILE_ORDER} element={<ProtectedRoute component={<ProfileOrderPage />} />} />
         </Route>
       </Routes>
 
@@ -61,7 +69,7 @@ function App() {
             path={routes.INGREDIENT}
             element={
               <Modal title='Детали ингредиента' onCloseClick={handleModalCloseClick}>
-                <IngredientDetails />
+                <IngredientPage />
               </Modal>
             }
           />
@@ -69,7 +77,7 @@ function App() {
             path={routes.FEED_ORDER}
             element={
               <Modal title='' onCloseClick={handleOrderModalCloseClick}>
-                <OrderInformation />
+                <FeedOrderPage />
               </Modal>
             }
           />
@@ -77,7 +85,7 @@ function App() {
             path={routes.PROFILE_ORDER}
             element={
               <Modal title='' onCloseClick={handleOrderModalCloseClick}>
-                <OrderInformation />
+                <ProfileOrderPage />
               </Modal>
             }
           />

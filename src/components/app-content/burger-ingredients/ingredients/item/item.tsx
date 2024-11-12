@@ -22,7 +22,11 @@ const Item = ({ data }: TItemProps) => {
 
   return (
     <Link to={`/ingredients/${data._id}`} state={{ backgroundLocation: location }}>
-      <div className={styles.container} ref={data.type === 'bun' ? dragBunRef : dragIngredientRef}>
+      <div
+        className={styles.container}
+        ref={data.type === 'bun' ? dragBunRef : dragIngredientRef}
+        data-testid={`ingredient_${data._id}`}
+      >
         <img className={`${styles.image} mx-4`} src={data.image} alt={`${data.name}.`} />
         {data.count > 0 && <Counter count={data.count} size='default' extraClass='m-1' />}
         <div className={styles.price}>

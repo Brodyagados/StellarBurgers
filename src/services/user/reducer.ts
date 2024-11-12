@@ -33,7 +33,7 @@ export type TUserState = {
   isAuthChecked: boolean;
 };
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   data: null,
   isLoading: false,
   error: null,

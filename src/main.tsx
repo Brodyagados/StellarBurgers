@@ -6,7 +6,7 @@ import { rootReducer } from './services';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { thunk } from 'redux-thunk';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { webSocketMiddleware } from './services/middleware';
 import { FEED_CLOSE, FEED_CONNECT, FEED_CONNECT_ERROR, FEED_DISCONNECT, FEED_MESSAGE } from './services/feed/actions';
 import {

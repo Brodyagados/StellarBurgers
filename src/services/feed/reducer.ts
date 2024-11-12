@@ -38,45 +38,27 @@ type TFeedSendAction = {
 };
 
 type TFeedState = {
-  isConnected: boolean;
   ordersList: TOrdersListModel | null;
   error: string | null;
 };
 
-const initialState: TFeedState = {
-  isConnected: false,
+export const initialState: TFeedState = {
   ordersList: null,
   error: null
 };
 
 export const feedReducer = (state = initialState, action: TFeedActions) => {
   switch (action.type) {
-    case FEED_CONNECT:
-      return {
-        ...state,
-        error: null,
-        isConnected: true
-      };
-
     case FEED_CONNECT_ERROR:
       return {
         ...state,
-        error: action.payload,
-        isConnected: false
+        error: action.payload
       };
 
     case FEED_CLOSE:
       return {
         ...state,
-        error: null,
-        isConnected: false
-      };
-
-    case FEED_DISCONNECT:
-      return {
-        ...state,
-        error: null,
-        isConnected: false
+        error: null
       };
 
     case FEED_MESSAGE:
